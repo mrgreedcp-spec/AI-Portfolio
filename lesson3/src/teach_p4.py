@@ -1,0 +1,318 @@
+# -*- coding: utf-8 -*-
+"""Passage 4 · The Origins of Weather Forecasting —— 逐题讲解内容（课后作业订正）。"""
+
+MAP = [
+    ("P1–P3", ["第一份公开预报", "FitzRoy 的背景", "议会并不支持"]),
+    ("P4–P6", ["Royal Charter 沉船", "技术条件成熟", "风暴预警系统"]),
+    ("P7–P8", ["公开预报服务", "渔民 vs 船主", "身后被承认"]),
+]
+
+STRATEGY = [
+    ("Q1–5 判断题：本篇陷阱集中在“评价词”（respected / supported）与“是否真的提到”。",),
+    ("Q6–13 笔记填空：ONE WORD ONLY，笔记按时间分两块，顺序与原文 P6→P8 完全一致。",),
+    ("作业要求：先限时 15 分钟做，再用本节课的四步拆句法订正，最后核对答案。",),
+]
+
+SUMMARY = [
+    ("判断题", ["respected 被否定", "supported 被否定", "competition 未提"]),
+    ("填空定位", ["P6 集中 6–9", "P7 出 10–11", "P8 出 12–13"]),
+    ("形式检查", ["ONE WORD ONLY", "单复数", "原文拼写"]),
+]
+
+Q = [
+ # ------------------------------------------------------------------ Q1
+ dict(n=1, kind="TFNG",
+   title="P4 Q1｜respected skill：评价词被原文否定",
+   stem="In Robert FitzRoy's time, weather forecasting was a respected skill.",
+   entry=["锚点：respected（受尊敬的）。", "找原文对当时预报的评价。"],
+   ev="P2 S2–S3: ... in those days predicting the weather had gained a reputation similar to astrology or "
+      "fortune-telling. The few people who attempted it had become a national joke when their forecasts "
+      "inevitably went wrong.",
+   logic=["原文把预报比作占星、算命，并说成了 national joke。",
+          "这是明确的负面评价，与 respected 正好相反。",
+          "有明确相反信息 → FALSE，不是 NOT GIVEN。"],
+   ans="FALSE", ansnote=["评价方向相反。", "有明确矛盾句。"],
+   stitle="P4 Q1｜because 原因状语 + similar to 的比喻",
+   sent="It was a brave undertaking, because in those days predicting the weather had gained a reputation "
+        "similar to astrology or fortune-telling.",
+   core="It was a brave undertaking because predicting the weather had gained a bad reputation.",
+   layers=["主句 It was a brave undertaking 已暗示“当时不被看好”。",
+           "because 引导原因状语从句，给出具体原因。",
+           "a reputation similar to ... 是名词＋后置形容词短语。",
+           "astrology / fortune-telling 是贬义参照物。"],
+   cn="这是一项勇敢的尝试，因为在那个年代，预测天气已经落得与占星术或算命相似的名声。",
+   vocab=["undertaking 事业、尝试 ↔ venture；reputation 名声",
+          "astrology 占星术；fortune-telling 算命"]),
+ # ------------------------------------------------------------------ Q2
+ dict(n=2, kind="TFNG",
+   title="P4 Q2｜successful career at sea：由履历推出",
+   stem="When FitzRoy retired from the navy, he had already had a successful career at sea.",
+   entry=["锚点：retired from the navy + career at sea。", "找退役前的经历。"],
+   ev="P3 S2–S3: His background was faultless, most famously his captaining of the ship HMS Beagle on "
+      "Charles Darwin's voyage around the world ... When FitzRoy retired from active service as an admiral "
+      "in Britain's navy, he was looking for a new direction.",
+   logic=["faultless background ＋ 担任小猎犬号船长 ＋ 军衔 admiral。",
+          "这些都属于“海上事业成功”的具体证据。",
+          "时间顺序也对：退役发生在这些经历之后。"],
+   ans="TRUE", ansnote=["履历＋军衔双证据。", "时间关系一致。"],
+   stitle="P4 Q2｜同位语 + which 非限定定语从句",
+   sent="His background was faultless, most famously his captaining of the ship HMS Beagle on Charles "
+        "Darwin's voyage around the world, which eventually led to the publication of Darwin's well-known "
+        "book On the Origin of Species.",
+   core="His background was faultless.",
+   layers=["主干极短：His background was faultless。",
+           "most famously ... 是同位补充，举最著名的例子。",
+           "which 指代前面整件事（那次环球航行）。",
+           "led to the publication 是结果，属背景信息。"],
+   cn="他的履历无可挑剔，最著名的是他在达尔文环球航行中担任小猎犬号船长，那次航行最终促成了达尔文名著《物种起源》的出版。",
+   vocab=["faultless 无可挑剔的 ↔ perfect / excellent；captain (v.) 担任船长",
+          "voyage 航行 ↔ journey by sea；admiral 海军上将"]),
+ # ------------------------------------------------------------------ Q3
+ dict(n=3, kind="TFNG",
+   title="P4 Q3｜competition：原文只说“得到了这份工作”",
+   stem="FitzRoy faced competition from other applicants for the chief statistician's job.",
+   entry=["锚点：competition / other applicants。", "问的是“有没有别的申请人”。"],
+   ev="P3 S4: He subsequently secured a job as chief statistician at the Meteorological Department, part of "
+      "the Board of Trade.",
+   logic=["原文只说他“获得了”这份工作。",
+          "关于竞争者、面试、选拔过程，全文一字未提。",
+          "职位名原词复现，但关系信息缺失 → NOT GIVEN。"],
+   ans="NOT GIVEN", ansnote=["关键词在，关系不在。", "缺失≠矛盾。"],
+   stitle="P4 Q3｜secured a job 与信息缺口",
+   sent="He subsequently secured a job as chief statistician at the Meteorological Department, part of the "
+        "Board of Trade.",
+   core="He secured a job as chief statistician.",
+   layers=["subsequently 是时间副词：随后。",
+           "as chief statistician 说明职位。",
+           "part of the Board of Trade 是机构的同位语。",
+           "整句没有任何“竞争”语义成分——这就是判定依据。"],
+   cn="他随后在贸易委员会下属的气象部门获得了首席统计员的职位。",
+   vocab=["secure a job 谋得职位 ↔ get / obtain a job",
+          "statistician 统计员；subsequently 随后 ↔ later"]),
+ # ------------------------------------------------------------------ Q4
+ dict(n=4, kind="TFNG",
+   title="P4 Q4｜supported：议会支持的是“部门”不是“预报”",
+   stem="The British Parliament supported the idea of regular weather forecasts in 1854.",
+   entry=["锚点：Parliament / 1854 / forecasts。", "注意“支持什么”这一层。"],
+   ev="P3 S5–S6: Parliament had voted to set up and fund the Meteorological Department on June 30, 1854, to "
+      "chart the safest sailing routes ... However, the British Government was not impressed with the idea of "
+      "collecting weather reports and establishing a weather forecast ...",
+   logic=["1854年议会支持的是“设立气象部门、绘制航线”。",
+          "对“建立天气预报”这一想法，政府 was not impressed，还遭到嘲笑。",
+          "题干把支持对象偷换成了 forecasts → 与原文相反。"],
+   ans="FALSE", ansnote=["支持对象被偷换。", "However 后是关键。"],
+   stitle="P4 Q4｜However 转折切开两个对象",
+   sent="However, the British Government was not impressed with the idea of collecting weather reports and "
+        "establishing a weather forecast, and the suggestion by one Member of Parliament for this was met "
+        "with laughter from the other MPs.",
+   core="The Government was not impressed with the idea of establishing a weather forecast.",
+   layers=["However 提示：与上一句的“支持”形成对比。",
+           "was not impressed with ＝ 不感兴趣、不看好。",
+           "and 后并列第二个分句：提议被嘲笑。",
+           "was met with laughter 是被动结构。"],
+   cn="然而，英国政府对收集天气报告、建立天气预报的想法并不感兴趣，一位议员就此提出的建议还遭到其他议员的哄笑。",
+   vocab=["be not impressed with 不看好 ↔ not support；fund 资助",
+          "be met with laughter 遭到嘲笑；chart 绘制（航线）"]),
+ # ------------------------------------------------------------------ Q5
+ dict(n=5, kind="TFNG",
+   title="P4 Q5｜progress in technology：三项技术条件",
+   stem="Progress in technology made it a good time for publicly available weather forecasting to begin.",
+   entry=["锚点：technology / good time。", "找“时机成熟”的原因句。"],
+   ev="P5 S2–S3: This was just the right moment for a national forecasting service. Knowledge of the weather "
+      "was improving, barometer readings gave warning of approaching storms, and the invention of the "
+      "electric telegraph and Morse code in 1844 gave instant communication for the first time.",
+   logic=["good time ↔ just the right moment。",
+          "progress in technology ↔ barometer readings ＋ electric telegraph ＋ Morse code。",
+          "两句连读，题干概括成立 → TRUE。"],
+   ans="TRUE", ansnote=["概括题干，逐项有据。", "两句连读。"],
+   stitle="P4 Q5｜三个并列分句撑起一个结论",
+   sent="Knowledge of the weather was improving, barometer readings gave warning of approaching storms, and "
+        "the invention of the electric telegraph and Morse code in 1844 gave instant communication for the "
+        "first time.",
+   core="Knowledge was improving; barometers gave warning; the telegraph gave instant communication.",
+   layers=["三个分句并列，用逗号＋and 连接。",
+           "每个分句都是完整的 S + V + O。",
+           "三项合起来正是题干说的 progress in technology。",
+           "上一句 This was just the right moment 是这三项的结论。"],
+   cn="人们对天气的认识在提高，气压计读数能预警临近的风暴，1844年电报和摩尔斯电码的发明第一次带来了即时通信。",
+   vocab=["barometer 气压计；telegraph 电报；instant 即时的",
+          "approaching storms 逼近的风暴；give warning of 预警"]),
+ # ------------------------------------------------------------------ Q6
+ dict(n=6, kind="FILL",
+   title="P4 Q6｜ships using reliable ____",
+   stem="FitzRoy received weather reports produced by ships using reliable 6 ………………",
+   entry=["using reliable + 空格 → 名词。", "锚点：February 1861 / 风暴预警。"],
+   ev="P6 S2: Previously, weather reports had been unreliable, but FitzRoy's innovation was to issue ships "
+      "with standardised instruments which allowed for accurate weather reports.",
+   logic=["reliable ↔ standardised / accurate。",
+          "issue ships with ... ＝ 给船只配发……。",
+          "空格填被配发的东西：instruments（复数）。"],
+   ans="instruments", ansnote=["ONE WORD ONLY。", "保留复数。"],
+   stitle="P4 Q6｜Previously ... but ... which 定语从句",
+   sent="Previously, weather reports had been unreliable, but FitzRoy's innovation was to issue ships with "
+        "standardised instruments which allowed for accurate weather reports.",
+   core="FitzRoy's innovation was to issue ships with standardised instruments.",
+   layers=["Previously ... unreliable 是对比背景（过去不可靠）。",
+           "but 之后才是创新点，也是答案所在。",
+           "to issue ... 是不定式作表语。",
+           "which allowed for ... 定语从句说明效果。"],
+   cn="此前天气报告一直不可靠，而 FitzRoy 的创新是给船只配发标准化仪器，使准确的天气报告成为可能。",
+   vocab=["standardised 标准化的 ↔ reliable；instrument 仪器",
+          "issue sb with sth 给某人配发某物；allow for 使……成为可能"]),
+ # ------------------------------------------------------------------ Q7
+ dict(n=7, kind="FILL",
+   title="P4 Q7｜telegraphed to ____ along the shore",
+   stem="storm warnings were telegraphed to 7 ……………… along the shore",
+   entry=["telegraphed to + 空格 → 地点名词。", "锚点：along the shore（沿岸）。"],
+   ev="P6 S4: The approach of an incoming storm could be recognised, and from London, FitzRoy could telegraph "
+      "warnings to ports on the coast ...",
+   logic=["telegraphed to ↔ could telegraph warnings to。",
+          "along the shore ↔ on the coast（沿海）。",
+          "空格填接收方：ports（复数）。"],
+   ans="ports", ansnote=["ONE WORD ONLY。", "复数 ports。"],
+   stitle="P4 Q7｜and 并列 + where 定语从句",
+   sent="The approach of an incoming storm could be recognised, and from London, FitzRoy could telegraph "
+        "warnings to ports on the coast, where an ingenious system of flags was hoisted up high for passing "
+        "ships to read.",
+   core="FitzRoy could telegraph warnings to ports on the coast.",
+   layers=["and 前后是两个独立分句。",
+           "from London 是地点状语，插在主语之前。",
+           "where 引导定语从句，修饰 ports——Q8 的答案在这里。",
+           "一句话连出两个答案，必须读到句末。"],
+   cn="逼近风暴的到来可以被识别出来，FitzRoy 能从伦敦把警报电传到沿海各港口，那里会高高升起一套巧妙的旗语系统供过往船只识读。",
+   vocab=["telegraph 电传 ↔ send by telegraph；port 港口",
+          "coast＝shore 海岸；incoming 逼近的"]),
+ # ------------------------------------------------------------------ Q8
+ dict(n=8, kind="FILL",
+   title="P4 Q8｜displayed using raised ____",
+   stem="signals for ships were displayed using raised 8 ………………",
+   entry=["raised + 空格 → 名词。", "锚点：signals for ships（给船的信号）。"],
+   ev="P6 S4: ... where an ingenious system of flags was hoisted up high for passing ships to read.",
+   logic=["signals for ships ↔ for passing ships to read。",
+          "raised ↔ was hoisted up high（被高高升起）。",
+          "空格填被升起的东西：flags。"],
+   ans="flags", ansnote=["ONE WORD ONLY。", "复数 flags。"],
+   stitle="P4 Q8｜被动语态 + for sb to do 目的",
+   sent="... where an ingenious system of flags was hoisted up high for passing ships to read.",
+   core="A system of flags was hoisted up high.",
+   layers=["主语是 an ingenious system of flags。",
+           "was hoisted 是被动：被升起。",
+           "for passing ships to read 是目的状语（不定式复合结构）。",
+           "答案要从 of 短语里取核心名词 flags。"],
+   cn="那里会把一套巧妙的旗语系统高高升起，供过往船只识读。",
+   vocab=["hoist 升起 ↔ raise / put up；ingenious 巧妙的 ↔ clever",
+          "passing ships 过往船只；signal 信号"]),
+ # ------------------------------------------------------------------ Q9
+ dict(n=9, kind="FILL",
+   title="P4 Q9｜greatest development since the ____",
+   stem="the storm warning service was the greatest development in sea safety since the 9 ……………… was introduced",
+   entry=["since the + 空格 + was introduced → 名词。", "锚点：sea safety 的上一次重大进步。"],
+   ev="P6 S5: This represented the biggest advance in shipping safety after the introduction of the lifeboat, "
+      "and in subsequent years the number of lives lost around Britain fell by about a third.",
+   logic=["greatest development ↔ the biggest advance。",
+          "sea safety ↔ shipping safety。",
+          "since ... was introduced ↔ after the introduction of ...，取 lifeboat。"],
+   ans="lifeboat", ansnote=["ONE WORD ONLY。", "单数 lifeboat。"],
+   stitle="P4 Q9｜名词化短语与从句的互换",
+   sent="This represented the biggest advance in shipping safety after the introduction of the lifeboat, and "
+        "in subsequent years the number of lives lost around Britain fell by about a third.",
+   core="This represented the biggest advance in shipping safety after the introduction of the lifeboat.",
+   layers=["This 回指上一句的旗语预警系统。",
+           "after the introduction of X 是名词化表达。",
+           "题目改写成 since X was introduced，是“名词化↔从句”的转换。",
+           "and 后是补充数据，不是答案。"],
+   cn="这代表了自救生艇问世以来航运安全方面最大的进步；随后几年，英国周边海域的死亡人数下降了约三分之一。",
+   vocab=["advance 进步 ↔ development；lifeboat 救生艇",
+          "introduction of X ＝ X was introduced（名词化转换）"]),
+ # ------------------------------------------------------------------ Q10
+ dict(n=10, kind="FILL",
+   title="P4 Q10｜safe trips to a favourite ____",
+   stem="frequently used by the English Queen for safe trips to a favourite 10 ………………",
+   entry=["to a favourite + 空格 → 地点名词。", "锚点：the English Queen。"],
+   ev="P7 S3: It attracted huge attention, including from Queen Victoria, who regularly sent messengers to "
+      "FitzRoy's office to get a forecast for the sea crossing over the Solent to an island which she liked "
+      "to visit off the south coast of England.",
+   logic=["English Queen ↔ Queen Victoria。",
+          "safe trips ↔ the sea crossing（渡海）。",
+          "favourite ↔ which she liked to visit，取 island。"],
+   ans="island", ansnote=["ONE WORD ONLY。", "单数 island。"],
+   stitle="P4 Q10｜who + which 两层定语从句",
+   sent="It attracted huge attention, including from Queen Victoria, who regularly sent messengers to "
+        "FitzRoy's office to get a forecast for the sea crossing over the Solent to an island which she "
+        "liked to visit off the south coast of England.",
+   core="Queen Victoria regularly sent messengers to get a forecast for the sea crossing.",
+   layers=["who 修饰 Queen Victoria，讲她做了什么。",
+           "to get a forecast 是目的状语。",
+           "which she liked to visit 修饰 an island——favourite 的来源。",
+           "off the south coast 是地点补充，别误当答案。"],
+   cn="它引起了巨大关注，包括来自维多利亚女王的关注；她经常派信使到 FitzRoy 的办公室，索取穿越索伦特海峡前往英格兰南岸外一座她喜欢造访的岛屿的天气预报。",
+   vocab=["messenger 信使；sea crossing 渡海航程",
+          "favourite ↔ which she liked to visit；off the coast 离岸"]),
+ # ------------------------------------------------------------------ Q11
+ dict(n=11, kind="FILL",
+   title="P4 Q11｜popular with fishermen but not with boat ____",
+   stem="FitzRoy's forecasts were popular with fishermen but not with boat 11 ………………",
+   entry=["boat + 空格 → 人的名词。", "题干是对比结构：渔民 vs ？"],
+   ev="P7 S4–S5: He was also popular with ordinary fishermen ... The owners of fishing vessels, however, "
+      "were not supportive of FitzRoy's forecasts, which often caused delays for them ...",
+   logic=["popular with fishermen 原句复现。",
+          "but not with ↔ however, were not supportive of。",
+          "boat owners ↔ the owners of fishing vessels，取 owners。"],
+   ans="owners", ansnote=["ONE WORD ONLY。", "复数 owners。"],
+   stitle="P4 Q11｜however 插入语造成的对比",
+   sent="The owners of fishing vessels, however, were not supportive of FitzRoy's forecasts, which often "
+        "caused delays for them when bad weather was forecast.",
+   core="The owners of fishing vessels were not supportive of FitzRoy's forecasts.",
+   layers=["however 插在主语与谓语之间，是对比信号。",
+           "主语 The owners of fishing vessels 与上句 fishermen 是两拨人。",
+           "which 指代 forecasts，说明不支持的原因。",
+           "when bad weather was forecast 是时间状语。"],
+   cn="然而渔船船主并不支持 FitzRoy 的预报，因为预报到坏天气时常常给他们造成延误。",
+   vocab=["vessel 船 ↔ boat / ship；owner 船主",
+          "be supportive of 支持 ↔ support；delay 延误"]),
+ # ------------------------------------------------------------------ Q12
+ dict(n=12, kind="FILL",
+   title="P4 Q12｜FitzRoy's ____ is used for a marine area",
+   stem="in modern times FitzRoy's 12 ……………… is used for a marine area",
+   entry=["FitzRoy's + 空格 → 名词。", "锚点：marine area（海域）。"],
+   ev="P8 S1: ... it is only in recent years that he has been recognised as a towering figure in meteorology, "
+      "with the honour of an area of sea being given his name in the shipping forecast ...",
+   logic=["in modern times ↔ in recent years。",
+          "marine area ↔ an area of sea。",
+          "being given his name ＝ 用他的名字命名，空格填 name。"],
+   ans="name", ansnote=["ONE WORD ONLY。", "单数 name。"],
+   stitle="P4 Q12｜It is only ... that ... 强调句",
+   sent="It is indisputable that FitzRoy was way ahead of his time, but it is only in recent years that he "
+        "has been recognised as a towering figure in meteorology, with the honour of an area of sea being "
+        "given his name in the shipping forecast.",
+   core="It is only in recent years that he has been recognised as a towering figure.",
+   layers=["前半句 It is indisputable that ... 是形式主语句。",
+           "后半句 it is only ... that ... 是强调句，强调时间。",
+           "去掉 It is / that 后主干仍成立：he has been recognised only in recent years。",
+           "with ... being given his name 是独立主格，补充荣誉细节。"],
+   cn="毫无疑问，FitzRoy 远远走在时代前面，但直到近些年他才被公认为气象学中的杰出人物，并获得了航运预报中以他的名字命名一片海域的殊荣。",
+   vocab=["indisputable 无可争辩的；towering figure 杰出人物",
+          "way ahead of his time 远超时代；marine ＝ of the sea"]),
+ # ------------------------------------------------------------------ Q13
+ dict(n=13, kind="FILL",
+   title="P4 Q13｜produced a ____ respected by scientists",
+   stem="FitzRoy produced a 13 ……………… which was respected by the scientific community",
+   entry=["produced a + 空格 → 单数可数名词。", "锚点：respected by scientists。"],
+   ev="P8 S3: But his legacy lives on, because late in his life he published a book about weather forecasting "
+      "which was recognised by other scientists to be well ahead of its time.",
+   logic=["produced ↔ published。",
+          "the scientific community ↔ other scientists。",
+          "respected ↔ recognised ... to be well ahead of its time，取 book。"],
+   ans="book", ansnote=["ONE WORD ONLY。", "单数 book。"],
+   stitle="P4 Q13｜because 从句 + which 定语从句",
+   sent="But his legacy lives on, because late in his life he published a book about weather forecasting "
+        "which was recognised by other scientists to be well ahead of its time.",
+   core="He published a book about weather forecasting.",
+   layers=["主句 his legacy lives on 是评价，不是答案。",
+           "because 从句里才有具体事实。",
+           "late in his life 是时间状语，插在从句主语前。",
+           "which ... 定语从句修饰 book，对应题干的 respected。"],
+   cn="但他的遗产延续了下来，因为在晚年他出版了一本关于天气预报的书，被其他科学家认为远远超前于时代。",
+   vocab=["legacy 遗产 ↔ what he left behind；publish 出版 ↔ produce",
+          "be recognised by 被……认可 ↔ be respected by"]),
+]
