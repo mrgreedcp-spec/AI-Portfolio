@@ -2,7 +2,7 @@
 """生成《雅思阅读精讲 · 第三节课打印资料》。
 
 结构与第二节课打印资料一致：
-    本节材料怎么用 → 方法卡 → 课前延迟检索 → 四篇文章（标注 P/S 的原文 + 题目 +
+    本节材料怎么用 → 方法卡 → 作业复盘 → 四篇文章（标注 P/S 的原文 + 题目 +
     长难句拆解区）→ 答案速查 → 词汇与长难句讲解
 题目、题号与答案全部照抄所给材料，未作改动。
 """
@@ -16,7 +16,7 @@ import docx_kit as K                                          # noqa: E402
 import passages as P                                          # noqa: E402
 import questions as QS                                        # noqa: E402
 import vocab as V                                             # noqa: E402
-import teach_p1, teach_p2, teach_p3, teach_p4, teach_pencil   # noqa: E402
+import teach_p0, teach_p1, teach_p2, teach_p3, teach_p4       # noqa: E402
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    "第三节课打印资料_雅思阅读精讲.docx")
@@ -76,7 +76,7 @@ def part_intro(doc):
 
     K.para(doc, "本节材料怎么用", style="Heading 2")
     for line in [
-        "0. 课前延迟检索：Pencil 流程图版 Q1–8（第二节课留题），建议限时 6 分钟，先做再讲。",
+        "0. The Development of Plastics：第二节课作业，本节开场复盘（表格填空 + 判断），逐题讲解见文末。",
         "1. How much higher? How much faster?：课堂精讲，判断 + 句子填空 + 选择三种题型一次打通。",
         "2. What Do Whales Feel?：课堂精讲，练表格填空的“行列定位”与简答题的“疑问词定词性”。",
         "3. Visual Symbols and the Blind：课堂精讲，新增图形配对与带词库的摘要填空。",
@@ -127,25 +127,27 @@ def part_method(doc):
                "核对（比较方向、范围程度、拼写与单复数）。", fill=K.FILL_SOFT)
 
 
-def part_pencil(doc):
+def part_plastics(doc):
+    """第二节课作业 The Development of Plastics —— 本节开场复盘。"""
     K.page_break(doc)
-    K.para(doc, "课前延迟检索", style="Guide Kicker")
-    K.para(doc, "The History of the Pencil — Flow-chart Version（Q1–8）", style="Heading 1")
-    K.para(doc, teach_pencil.NOTE, style="Guide Lead")
-    K.note_box(doc, "作答要求",
-               "限时 6 分钟，不查词典、不讨论。每题先写 P/S 定位再写答案；"
-               "判断题必须写出“支持 / 矛盾 / 未提”三选一。原文见第二节课打印资料 Passage 3。")
+    K.para(doc, "HOMEWORK REVIEW • 第二节课作业", style="Guide Kicker")
+    K.para(doc, P.P0_TITLE, style="Heading 1")
+    K.para(doc, P.P0_CN, style="Heading 3")
+    K.para(doc, QS.P0_LEAD, style="Guide Lead")
+    K.note_box(doc, "复盘要求",
+               "先对答案、标出对错，但不要立刻看讲解。每道错题写出 P/S 定位与题干↔原文的"
+               "同义替换，最后写错因（定位错 / 替换错 / 范围与方向错）。"
+               "逐题精讲与词汇、长难句见本讲义文末。")
 
-    qhead(doc, QS.PEN_Q1_3_HEAD, QS.PEN_Q1_3_INS)
-    notes_list(doc, QS.PEN_NOTES)
-    qhead(doc, QS.PEN_Q4_8_HEAD, "Write TRUE, FALSE or NOT GIVEN. 每题同时记录 P/S。")
-    tfng_list(doc, QS.PEN_Q4_8)
+    passage_body(doc, P.P0_PARAS)
 
-    K.para(doc, "逐题精讲（做完再看）", style="Heading 3")
-    K.grid(doc, ("题号", "答案", "定位", "原文证据", "讲解"),
-           [(str(n), a, loc, ev, expl)
-            for n, kind, a, loc, ev, expl in teach_pencil.ITEMS],
-           [560, 1160, 860, 3700, 3586], size=8.5, first_bold=True)
+    qhead(doc, QS.P0_Q1_7_HEAD, QS.P0_Q1_7_INS)
+    K.para(doc, QS.P0_TABLE_TITLE, style="Question Text", bold=True)
+    K.grid(doc, QS.P0_TABLE[0], QS.P0_TABLE[1:], [1500, 900, 1300, 3100, 3066], size=9)
+    qhead(doc, QS.P0_Q8_13_HEAD, QS.P0_Q8_13_INS)
+    tfng_list(doc, QS.P0_Q8_13)
+
+    analysis_zone(doc, "P0")
 
 
 def part_passage(doc, no, title_en, title_cn, sub, paras, key, lead, advice,
@@ -239,8 +241,8 @@ def part_answers(doc):
         w[-1] = K.FULL_W - sum(w[:-1])
         K.grid(doc, None, rows, w, size=9.5, first_bold=False)
 
-    two_col("课前延迟检索 · Pencil Flow-chart Version（Q1–8）",
-            QS.PEN_ANSWERS, sorted(QS.PEN_ANSWERS))
+    two_col("作业复盘 · The Development of Plastics（Q1–13）",
+            QS.P0_ANSWERS, sorted(QS.P0_ANSWERS))
     two_col("Passage 1 · How much higher? How much faster?",
             QS.P1_ANSWERS, sorted(QS.P1_ANSWERS))
     two_col("Passage 2 · What Do Whales Feel?",
@@ -264,7 +266,8 @@ def part_explain(doc):
     K.para(doc, "逐题精讲：答案 · 定位 · 同义替换", style="Heading 1")
     K.para(doc, "与课堂 PPT 完全对应；课后订正时先自己写一遍，再对照本表。", style="Guide Lead")
 
-    for title, mod in (("Passage 1 · How much higher? How much faster?", teach_p1),
+    for title, mod in (("作业复盘 · The Development of Plastics", teach_p0),
+                       ("Passage 1 · How much higher? How much faster?", teach_p1),
                        ("Passage 2 · What Do Whales Feel?", teach_p2),
                        ("Passage 3 · Visual Symbols and the Blind", teach_p3),
                        ("Passage 4 · The Origins of Weather Forecasting", teach_p4)):
@@ -290,12 +293,13 @@ def part_vocab(doc):
                "②用简洁中文说出主干意思。")
 
     titles = {
+        "P0": "0. The Development of Plastics｜塑料的发展史（第二节课作业）",
         "P1": "1. How much higher? How much faster?｜人类运动表现的极限",
         "P2": "2. What Do Whales Feel?｜鲸类的感官",
         "P3": "3. Visual Symbols and the Blind｜视觉符号与盲人",
         "P4": "4. The Origins of Weather Forecasting｜天气预报的起源",
     }
-    for key in ("P1", "P2", "P3", "P4"):
+    for key in ("P0", "P1", "P2", "P3", "P4"):
         K.para(doc, titles[key], style="Heading 2")
 
         K.para(doc, "A｜重点雅思词汇与同义替换", style="Heading 3")
@@ -319,7 +323,7 @@ def build():
 
     part_intro(doc)
     part_method(doc)
-    part_pencil(doc)
+    part_plastics(doc)
 
     part_passage(doc, 1, P.P1_TITLE, P.P1_CN, P.P1_SUB, P.P1_PARAS, "P1",
                  "课堂精讲：判断题看比较方向与全称词；句子填空用介词预测词性；"

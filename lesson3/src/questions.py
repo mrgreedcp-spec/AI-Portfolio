@@ -188,26 +188,48 @@ P4_ANSWERS = {
     10: "island", 11: "owners", 12: "name", 13: "book",
 }
 
-# ======================================= 课前延迟检索：Pencil 流程图版 Q1–8
-PEN_HEAD = "课前延迟检索 · The History of the Pencil（Flow-chart Version）Q1–8"
-PEN_LEAD = ("第二节课课堂只做了 Q9–13，Q1–8 留作本节课课前延迟检索。"
-            "间隔一周后再检索，才是真正检验“方法是否留下来”。")
-PEN_Q1_3_HEAD = "Questions 1–3 · Notes Completion"
-PEN_Q1_3_INS = "Choose ONE WORD ONLY from the passage for each answer."
-PEN_NOTES = [
-    ("H", "In the 1500s, Borrowdale graphite"),
-    ("B", "was used by farmers in the area to indicate which 1 ………………  they owned"),
-    ("B", "was first believed to be a type of 2 ………………"),
-    ("B", "was encased in string to produce early pencils"),
-    ("B", "was recognised by the English 3 ……………… as important in the manufacture of cannon balls"),
+# ============================ 第二节课作业复盘：The Development of Plastics
+P0_LEAD = ("The Development of Plastics 是第二节课布置的课后独立作业。"
+           "本节课开场先复盘：表格填空考“属性 / 用途 / 国别”的行列定位，"
+           "判断题考化学关系与程度词。")
+
+P0_Q1_7_HEAD = "Questions 1–7 · Table Completion"
+P0_Q1_7_INS = ("Complete the table below. Choose NO MORE THAN THREE WORDS from the passage "
+               "for each answer.")
+P0_TABLE_TITLE = "Early types of plastic"
+# (Name, Date, Country of origin, Properties, Common uses) —— 与所给 PDF 逐格一致
+P0_TABLE = [
+    ("Name", "Date", "Country of origin", "Properties", "Common uses"),
+    ("Celluloid", "1860s", "USA", "can be soften and reshaped by heat",
+     "•  billiard balls (original use)\n•  cutlery\n•  clothing\n•  1 ………………"),
+    ("2 ………………", "1907", "USA",
+     "can't be softened after setting; good insulator; resistant to water and acid",
+     "•  3 ………………\n•  household object"),
+    ("Polythene", "1930s", "4 ………………", "can be softened and reshaped by heat",
+     "•  bottles\n•  pipes\n•  plastic bags"),
+    ("Polypropylene", "1950s", "", "", "•  bottles\n•  pipes\n•  plastic bags"),
+    ("Rigid PVC", "", "", "is 5 ………………", "•  external piping"),
+    ("Soft PVC", "", "", "", "•  outdoor clothing"),
+    ("Polystyrene", "1930s", "Germany", "resembles 6 ………………",
+     "•  food containers\n•  toy"),
+    ("Polyurethane", "", "Germany", "usually manufactured as a 7 ………………", "•  insulation"),
 ]
-PEN_Q4_8_HEAD = "Questions 4–8 · TRUE / FALSE / NOT GIVEN"
-PEN_Q4_8 = [
-    (4, "Borrowdale graphite was superior to all other forms of graphite."),
-    (5, "Pencil production in the Borrowdale area only lasted until the 1860s."),
-    (6, "The Cumberland pencil museum contains examples of pencils from different European countries."),
-    (7, "A technique which improved on the Bernacottis' method of making pencils is still used now."),
-    (8, "In 1662, manufacturers in Nuremberg made pencils with graphite imported from England."),
+
+P0_Q8_13_HEAD = "Questions 8–13 · TRUE / FALSE / NOT GIVEN"
+P0_Q8_13_INS = ("Do the following statements agree with the information in Reading Passage 1? "
+                "Write TRUE if the statement agrees with the information, FALSE if the statement "
+                "contradicts the information, NOT GIVEN if there is no information about this.")
+P0_Q8_13 = [
+    (8, "The chemical structure of rubber is very different from that of plastics."),
+    (9, "John Wesley Hyatt was an industrial chemist."),
+    (10, "Celluloid and Bakelite react in the same way to heat."),
+    (11, "If an object is made of several plastics, these prove hard to break down and reuse."),
+    (12, "Adding starch to plastic makes it more durable."),
+    (13, "Containers which are designed to decompose need particular storage conditions."),
 ]
-PEN_ANSWERS = {1: "sheep", 2: "lead", 3: "government",
-               4: "TRUE", 5: "FALSE", 6: "NOT GIVEN", 7: "TRUE", 8: "NOT GIVEN"}
+
+P0_ANSWERS = {
+    1: "photographic film", 2: "Bakelite", 3: "electrical switches", 4: "Britain",
+    5: "fireproof", 6: "glass", 7: "foam",
+    8: "FALSE", 9: "NOT GIVEN", 10: "FALSE", 11: "TRUE", 12: "FALSE", 13: "TRUE",
+}

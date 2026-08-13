@@ -6,6 +6,62 @@ LONG[key]  = [(原句, 原句理解翻译, 句子主干, 简化后的主干意�
 """
 
 VOCAB = {
+"P0": [
+ ("substitute /ˈsʌbstɪtjuːt/ 替代品；代替", "replacement / alternative / something used instead of",
+  "sub-（下面）＋stitute（放）→ 放到别人的位置上。",
+  "The first plastics were developed as a substitute for natural rubber. 最早的塑料是作为天然橡胶的替代品研制出来的。"),
+ ("compound /ˈkɒmpaʊnd/ 化合物", "substance made of two or more elements / chemical combination",
+  "com-（共同）＋pound（放）→ 合在一起的物质。",
+  "Rubber is a compound containing large molecules. 橡胶是一种含有大分子的化合物。"),
+ ("bonding /ˈbɒndɪŋ/ 成键；结合", "joining / linking / chemical connection",
+  "bond＝纽带、化学键。",
+  "The same bonding principle is the basis of plastics. 同样的成键原理是塑料的基础。"),
+ ("decline /dɪˈklaɪn/ 减少；下降", "fall / decrease / go down / become less available",
+  "de-（向下）＋cline（倾斜）。",
+  "Supplies of ivory were declining in the 1860s. 19世纪60年代象牙的供应在减少。"),
+ ("dissolve /dɪˈzɒlv/ 溶解", "melt into a liquid / break down in liquid",
+  "dis-（分开）＋solve（松开）→ 化开。",
+  "Celluloid was made by dissolving cellulose in a solution. 赛璐珞是把纤维素溶解在溶液中制成的。"),
+ ("take off 起飞；兴起", "become successful / grow rapidly / start to develop",
+  "飞机起飞＝事业起步。",
+  "The film industry could never have taken off without it. 没有它电影业根本不可能起步。"),
+ ("insulator /ˈɪnsjuleɪtə/ 绝缘体", "material that does not conduct electricity / insulating material",
+  "insulate＝隔离；名词即“隔离体”。",
+  "Bakelite was a good insulator. Bakelite 是良好的绝缘体。"),
+ ("resistant to /rɪˈzɪstənt/ 耐……的；抗……的", "not damaged by / able to withstand / proof against",
+  "resist（抵抗）＋-ant。",
+  "It was resistant to water and acid. 它耐水耐酸。"),
+ ("domestic /dəˈmestɪk/ 家用的；国内的", "household / home / used in the house",
+  "阅读中先按语境判断是“家用”还是“国内”。",
+  "It was used in a variety of domestic items. 它被用于各种家用物品。"),
+ ("rigid /ˈrɪdʒɪd/ 硬质的；坚硬的", "stiff / hard / not flexible",
+  "与 rigorous 同根，都有“不弯”的意思。",
+  "Rigid PVC is suitable for drains and gutters. 硬质 PVC 适用于排水管和檐槽。"),
+ ("fireproof /ˈfaɪəpruːf/ 防火的", "fire-resistant / not able to burn / safe from fire",
+  "fire＋proof（防……的），同类还有 waterproof。",
+  "Rigid PVC is a fireproof plastic. 硬质 PVC 是一种防火塑料。"),
+ ("friction /ˈfrɪkʃn/ 摩擦（力）", "rubbing / resistance between surfaces",
+  "想象两个面互相摩擦。",
+  "Teflon produces very little friction. 特氟龙产生的摩擦极小。"),
+ ("resemble /rɪˈzembl/ 类似于", "be like / look like / be similar to",
+  "re-＋semble（相似，见 similar）。",
+  "Polystyrene resembles glass. 聚苯乙烯像玻璃。"),
+ ("foam /fəʊm/ 泡沫", "light spongy material / bubbly material",
+  "洗发水的泡沫就是 foam。",
+  "Polyurethane was commonly produced as a foam. 聚氨酯通常被制成泡沫。"),
+ ("indestructibility /ˌɪndɪstrʌktəˈbɪləti/ 不可摧毁性", "being impossible to destroy / extreme durability",
+  "in-（不）＋destruct（毁）＋-ibility。",
+  "Its indestructibility is its greatest disadvantage. 它的不可摧毁性正是它最大的缺点。"),
+ ("call for 需要；要求", "require / need / demand",
+  "字面“呼唤”，引申为“需要”。",
+  "Different types of plastic call for different treatments. 不同种类的塑料需要不同的处理方式。"),
+ ("biodegradable /ˌbaɪəʊdɪˈɡreɪdəbl/ 可生物降解的", "able to be broken down by bacteria / decomposable",
+  "bio（生物）＋degrade（降解）＋-able。",
+  "Plastics can be made biodegradable. 塑料可以被制成可生物降解的。"),
+ ("disintegrate /dɪsˈɪntɪɡreɪt/ 解体；碎裂", "fall apart / break into pieces / decompose",
+  "dis-＋integrate（整合）→ 不再整体。",
+  "Bottles must not disintegrate before they have been used. 瓶子不能在使用前就解体。"),
+],
 "P1": [
  ("steady /ˈstedi/ 稳定的；持续的", "continuous / consistent / regular / not changing suddenly",
   "steady 与 stay 同源，“待得住”＝稳定。",
@@ -197,6 +253,45 @@ VOCAB = {
 }
 
 LONG = {
+"P0": [
+ ("Chemically, rubber is a polymer—a compound containing large molecules that are formed by the bonding "
+  "of many smaller, simpler units, repeated over and over again.",
+  "从化学角度看，橡胶是一种聚合物——即由许多更小更简单的单元反复成键而形成大分子的化合物。",
+  "Rubber is a polymer.",
+  "橡胶是一种聚合物。"),
+ ("In the 1860s, $10,000 was offered to anybody who could replace ivory—supplies of which were declining—"
+  "with something equally good as a material for making billiard balls.",
+  "19世纪60年代，有人悬赏一万美元，奖给能用同样好的材料替代象牙（其供应正在减少）来制造台球的人。",
+  "$10,000 was offered to anybody who could replace ivory.",
+  "谁能替代象牙就能拿到一万美元。"),
+ ("But perhaps the best-known celluloid product was photographic film, without which the film industry "
+  "could never have taken off at the end of the 19th century.",
+  "但也许最著名的赛璐珞产品是照相胶片；没有它，电影业在19世纪末根本不可能起步。",
+  "The best-known celluloid product was photographic film.",
+  "赛璐珞最著名的产品是照相胶片。"),
+ ("Baekeland called it Bakelite, and it was the first of the thermosets—plastics that can be cast and "
+  "moulded while hot, but cannot be softened by heat and reshaped once they have set.",
+  "Baekeland 把它称作 Bakelite；它是第一种热固性塑料——这类塑料受热时可浇铸成型，"
+  "但一旦定型就无法再受热软化和重塑。",
+  "It was the first of the thermosets.",
+  "它是第一种热固性塑料。"),
+ ("A small change in the starting material—replacing a hydrogen atom in ethylene with a chlorine atom—"
+  "produced rigid PVC (polyvinyl chloride), a fireproof plastic suitable for drains and gutters.",
+  "起始材料上的一个小改动——把乙烯中的一个氢原子换成氯原子——制造出了硬质 PVC，"
+  "这是一种适用于排水管和檐槽的防火塑料。",
+  "A small change produced rigid PVC.",
+  "一个小改动做出了硬质 PVC。"),
+ ("Nor is it very easy to recycle plastics, as different types of plastic are often found in the same "
+  "items and call for different treatments.",
+  "塑料也不太容易回收，因为同一件物品中往往含有不同种类的塑料，而它们需要不同的处理方式。",
+  "It is not very easy to recycle plastics.",
+  "塑料回收并不容易。"),
+ ("Plastics can be made biodegradable by incorporating into their structure a material such as starch, "
+  "which is attacked by bacteria and causes the plastic to fall apart.",
+  "通过在结构中加入淀粉之类的材料，可以使塑料变得可生物降解；这种材料会被细菌侵蚀，并使塑料散架。",
+  "Plastics can be made biodegradable by incorporating starch.",
+  "加入淀粉能让塑料降解。"),
+],
 "P1": [
  ("Since the early years of the twentieth century, when the International Athletic Federation began keeping "
   "records, there has been a steady improvement in how fast athletes run, how high they jump and how far "

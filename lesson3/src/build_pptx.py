@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from deck import Deck, PAL                                    # noqa: E402
 import questions as QS                                        # noqa: E402
-import teach_p1, teach_p2, teach_p3, teach_p4, teach_pencil   # noqa: E402
+import teach_p0, teach_p1, teach_p2, teach_p3, teach_p4       # noqa: E402
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    "第三节课PPT_雅思阅读精讲.pptx")
@@ -85,18 +85,23 @@ def diagram_slide(d, foot):
     return s
 
 
-def passage_block(d, mod, no, title_en, title_cn, foot, hooks=None):
-    """一篇文章：文章地图 → 题型策略 → 逐题两页 → 小结。"""
+def passage_block(d, mod, no, title_en, title_cn, foot, hooks=None,
+                  label=None, head=None):
+    """一篇文章：文章地图 → 题型策略 → 逐题两页 → 小结。
+
+    label / head 用于作业复盘一类不按 Passage 编号的板块。
+    """
     hooks = hooks or {}
-    d.three_col("文章地图", f"PASSAGE {no} · {title_en}", mod.MAP)
-    d.bullets("题型策略", f"Passage {no} 题型策略",
+    name = label or f"Passage {no}"
+    d.three_col("文章地图", head or f"PASSAGE {no} · {title_en}", mod.MAP)
+    d.bullets("题型策略", f"{name} 题型策略",
               [(t[0], tone) for t, tone in
                zip(mod.STRATEGY, ["cream", "blue", "purple", "green"])])
     for q in mod.Q:
         if q["n"] in hooks:
             hooks[q["n"]](d, foot)
         question_pair(d, q, foot)
-    d.three_col("小结", f"Passage {no} 小结：{title_cn}", mod.SUMMARY)
+    d.three_col("小结", f"{name} 小结：{title_cn}", mod.SUMMARY)
 
 
 def build():
@@ -114,11 +119,11 @@ def build():
             ["材料：Athletics + Whales + Blind（Q1–40）+ Weather Forecasting（课后）"],
             "cream", bold=True, sizes=(24, 22, 20, 18))
     d.panel(s, 0.72, 5.55, 11.90, 0.95,
-            ["课前延迟检索：Pencil 流程图版 Q1–8（第二节课留题）"],
+            ["开场作业复盘：The Development of Plastics Q1–13（第二节课作业）"],
             "purple", bold=True, sizes=(22, 20, 18, 17))
 
     d.three_col("ROADMAP", "今天的认知路线：从“会拆句”到“会拆题型”", [
-        ("1 延迟检索", ["Pencil Q1–8", "先做再讲", "检验方法留存"]),
+        ("1 作业复盘", ["Plastics Q1–13", "表格 + 判断", "先对答案再讲错因"]),
         ("2 题型拓展", ["选择题四步", "表格 / 简答", "图形 + 词库摘要"]),
         ("3 逐题精讲", ["一题两页", "第一页答案链", "第二页句法链"]),
     ])
@@ -135,35 +140,19 @@ def build():
         ("判得稳答案", ["核对比较方向", "核对范围程度", "核对词数形式"]),
     ])
 
-    # ============================================== 课前延迟检索：Pencil Q1–8
-    d.bullets("DELAYED RETRIEVAL", "课前延迟检索：Pencil 流程图版 Q1–8", [
-        (teach_pencil.NOTE, "cream"),
-        (["作答要求", "1 限时 6 分钟，不查词典、不讨论。",
-          "2 每题写出 P/S 定位，再写答案。",
-          "3 判断题必须写“支持 / 矛盾 / 未提”三选一。"], "green"),
-        (["为什么隔一周再做", "当场做对＝短期记忆；隔一周做对＝方法真的留下来了。",
-          "错在定位，还是错在同义替换？这一步决定你今天该练什么。"], "blue"),
+    # ================================ 作业复盘：The Development of Plastics
+    d.bullets("HOMEWORK REVIEW", "开场作业复盘：The Development of Plastics Q1–13", [
+        (QS.P0_LEAD, "cream"),
+        (["复盘要求", "1 先对答案，标出对错，但不要立刻看讲解。",
+          "2 每道错题写出 P/S 定位，再写题干与原文的同义替换。",
+          "3 最后写错因：定位错 / 替换错 / 范围与方向错。"], "green"),
+        (["为什么用作业开场", "作业是隔了一周之后做的，它检验的不是记忆，而是方法有没有留下来。",
+          "错在哪一步，决定你今天这节课该重点练什么。"], "blue"),
     ])
-
-    pen_foot = "Pencil Flow-chart Version · 延迟检索 Q1–8"
-    for grp, rng in (("Q1–3 · Notes Completion", (1, 3)),
-                     ("Q4–8 · TRUE / FALSE / NOT GIVEN", (4, 8))):
-        items = [it for it in teach_pencil.ITEMS if rng[0] <= it[0] <= rng[1]]
-        for no, kind, ans, loc, ev, expl in items:
-            s = d.slide("延迟检索逐题复盘", f"Pencil {grp.split(' ·')[0]}｜Q{no}　答案：{ans}",
-                        pen_foot)
-            d.labelled(s, 0.78, 1.50, 11.77, 1.55, "① 原文证据", [f"{loc}: {ev}"],
-                       "blue", sizes=(19, 18, 17, 16, 15), lw=2.4)
-            d.labelled(s, 0.78, 3.45, 7.60, 1.85, "② 定位 + 同义替换 / 判断逻辑",
-                       [expl], "green", sizes=(19, 18, 17, 16, 15), lw=4.0)
-            d.labelled(s, 8.72, 3.45, 3.83, 1.85, "③ 答案",
-                       [f"Answer: {ans}", f"题型：{kind}", f"定位：{loc}"], "amber",
-                       bold=True, sizes=(21, 20, 19, 18, 17), lw=2.4)
-            d.panel(s, 0.78, 5.70, 11.77, 0.85,
-                    ["订正动作：先写 P/S，再写题干与原文的同义替换，最后写错因（定位错 / 替换错 / 范围错）。"],
-                    "cream", bold=True, sizes=(18.5, 17.5, 16.5, 15.5))
-
-    d.three_col("RETRIEVAL REVIEW", "延迟检索小结：错因只有三类", teach_pencil.REVIEW_POINTS)
+    passage_block(d, teach_p0, 0, "The Development of Plastics",
+                  "表格按材料行推进，判断题看化学关系",
+                  "第二节课作业 · The Development of Plastics",
+                  label="作业", head="HOMEWORK · The Development of Plastics")
 
     # ============================================================ 新题型方法
     d.bullets("NEW TYPES", "本节新增题型总览：先认动作，再做题", [
