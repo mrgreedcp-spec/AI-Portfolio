@@ -44,12 +44,14 @@ src/
   teach_p0.py     第二节课作业 Plastics 逐题复盘
   teach_p1..p4.py 各篇逐题讲解内容
   vocab.py        词汇表与长难句表
-  deck.py         PPT 版式引擎（设计令牌 + 自动字号适配）
   docx_kit.py     讲义排版工具（复用第二节课样式表）
   make_wheels.py  生成 Q30–32 轮子示意图
   build_pptx.py   生成 PPT
   build_docx.py   生成打印资料
 ```
+
+PPT 版式引擎不在本目录，而在共享 skill `.claude/skills/ielts-lesson-deck/`，
+第 4–9 节课直接复用，不要再复制一份。
 
 重新生成：
 

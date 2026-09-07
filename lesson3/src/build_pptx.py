@@ -9,60 +9,18 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(os.path.dirname(_SRC))
+sys.path.insert(0, _SRC)
+# 版式引擎来自共享 skill，各课共用一份
+sys.path.insert(0, os.path.join(_ROOT, ".claude", "skills", "ielts-lesson-deck"))
 
-from deck import Deck, PAL                                    # noqa: E402
+from deck import Deck                                         # noqa: E402
 import questions as QS                                        # noqa: E402
 import teach_p0, teach_p1, teach_p2, teach_p3, teach_p4       # noqa: E402
 
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                    "第三节课PPT_雅思阅读精讲.pptx")
-
-LETTERS = "ABCDE"
-
-
-# --------------------------------------------------------------- 逐题两页
-def question_pair(d, q, foot):
-    """一题两页：逐题标准精讲 + 长难句拆解 / 随题词汇。"""
-    # ---------- 第一页：逐题标准精讲
-    s = d.slide("逐题标准精讲", q["title"], foot)
-    is_mcq = q["kind"] == "MCQ"
-
-    if is_mcq:
-        d.panel(s, 0.72, 1.40, 11.90, 0.58, [q["stem"]], "cream", bold=True,
-                sizes=(23, 21, 19, 18, 17))
-        opts = [f"{LETTERS[i]}  {o}" for i, o in enumerate(q["options"])]
-        d.panel(s, 0.72, 2.06, 11.90, 1.34, opts, "amber", bold=False,
-                sizes=(18, 17, 16, 15, 14), anchor=None)
-        y2, h2 = 3.56, 1.28
-        y3, h3 = 5.38, 1.16
-    else:
-        d.panel(s, 0.72, 1.42, 11.90, 1.02, [q["stem"]], "cream", bold=True,
-                sizes=(24, 22, 20, 18, 17, 16))
-        y2, h2 = 2.72, 1.52
-        y3, h3 = 4.86, 1.62
-
-    d.labelled(s, 0.78, y2, 3.55, h2, "① 入口", q["entry"], "purple", lw=2.4)
-    d.labelled(s, 4.70, y2, 7.85, h2, "② 原文证据", [q["ev"]], "blue", lw=2.4)
-    d.labelled(s, 0.78, y3, 7.30, h3, "③ 同义替换 / 判断逻辑", q["logic"], "green", lw=3.4)
-    d.labelled(s, 8.45, y3, 4.10, h3, "④ 答案",
-               [f"Answer: {q['ans']}"] + list(q["ansnote"]), "amber",
-               bold=True, sizes=(21, 20, 19, 18, 17, 16), lw=2.4)
-
-    # ---------- 第二页：长难句拆解 + 随题词汇
-    s = d.slide("长难句拆解 + 随题词汇", q["stitle"], foot)
-    d.panel(s, 0.72, 1.42, 11.90, 1.32, [q["sent"]], "cream", bold=True,
-            sizes=(20.5, 19, 18, 17, 16, 15, 14))
-    d.labelled(s, 0.78, 2.92, 3.24, 2.12, "核心主干", [q["core"]], "red",
-               bold=True, sizes=(20, 19, 18, 17, 16, 15, 14), lw=2.0)
-    d.labelled(s, 4.32, 2.92, 4.42, 2.12, "层层拆解",
-               [f"· {x}" for x in q["layers"]], "blue",
-               sizes=(18.8, 18, 17, 16, 15, 14, 13), lw=2.0)
-    d.labelled(s, 9.04, 2.92, 3.51, 2.12, "课堂表达", [q["cn"]], "green",
-               sizes=(19.2, 18, 17, 16, 15, 14, 13), lw=2.0)
-    d.labelled(s, 0.78, 5.55, 11.77, 1.00, "随题词汇 / 同义替换", q["vocab"], "amber",
-               bold=True, sizes=(18.5, 17.5, 16.5, 15.5, 14.5), lw=3.4)
-
 
 def diagram_slide(d, foot):
     """Q30–32 三个轮子的图形对照页。"""
@@ -83,25 +41,6 @@ def diagram_slide(d, foot):
              "extending beyond perimeter → use of brakes；dashed → rapid spinning。"],
             "green", bold=True, sizes=(19, 18, 17, 16))
     return s
-
-
-def passage_block(d, mod, no, title_en, title_cn, foot, hooks=None,
-                  label=None, head=None):
-    """一篇文章：文章地图 → 题型策略 → 逐题两页 → 小结。
-
-    label / head 用于作业复盘一类不按 Passage 编号的板块。
-    """
-    hooks = hooks or {}
-    name = label or f"Passage {no}"
-    d.three_col("文章地图", head or f"PASSAGE {no} · {title_en}", mod.MAP)
-    d.bullets("题型策略", f"{name} 题型策略",
-              [(t[0], tone) for t, tone in
-               zip(mod.STRATEGY, ["cream", "blue", "purple", "green"])])
-    for q in mod.Q:
-        if q["n"] in hooks:
-            hooks[q["n"]](d, foot)
-        question_pair(d, q, foot)
-    d.three_col("小结", f"{name} 小结：{title_cn}", mod.SUMMARY)
 
 
 def build():
@@ -149,7 +88,7 @@ def build():
         (["为什么用作业开场", "作业是隔了一周之后做的，它检验的不是记忆，而是方法有没有留下来。",
           "错在哪一步，决定你今天这节课该重点练什么。"], "blue"),
     ])
-    passage_block(d, teach_p0, 0, "The Development of Plastics",
+    d.passage_block(teach_p0, 0, "The Development of Plastics",
                   "表格按材料行推进，判断题看化学关系",
                   "第二节课作业 · The Development of Plastics",
                   label="作业", head="HOMEWORK · The Development of Plastics")
@@ -192,11 +131,11 @@ def build():
     ])
 
     # ============================================================ 四篇文章
-    passage_block(d, teach_p1, 1, "How much higher? How much faster?",
+    d.passage_block(teach_p1, 1, "How much higher? How much faster?",
                   "判断 + 填空 + 选择三件套", "Passage 1 · How much higher? How much faster?")
-    passage_block(d, teach_p2, 2, "What Do Whales Feel?",
+    d.passage_block(teach_p2, 2, "What Do Whales Feel?",
                   "表格与简答的定位纪律", "Passage 2 · What Do Whales Feel?")
-    passage_block(d, teach_p3, 3, "Visual Symbols and the Blind",
+    d.passage_block(teach_p3, 3, "Visual Symbols and the Blind",
                   "选择 / 配对 / 词库摘要", "Passage 3 · Visual Symbols and the Blind",
                   hooks={30: diagram_slide})
 
@@ -207,7 +146,7 @@ def build():
           "3 填空题检查 ONE WORD ONLY、单复数与原文拼写。"], "green"),
         ("以下逐题精讲用于自主订正；先做完再看，不要边做边翻。", "purple"),
     ])
-    passage_block(d, teach_p4, 4, "The Origins of Weather Forecasting",
+    d.passage_block(teach_p4, 4, "The Origins of Weather Forecasting",
                   "判断题看评价词，填空题看名词化",
                   "Passage 4 · The Origins of Weather Forecasting")
 
