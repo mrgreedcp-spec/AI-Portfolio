@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>加拿大手机套餐指南</title>
+<style>
+/* ===== 设计变量（浅色 / 深色） ===== */
+:root{
+  --bg:#F5F5F3; --surface:#FFFFFF; --surface-2:#EEEDEA; --ink:#1C1E22; --muted:#585E68; --line:#DDDBD7;
+  --accent:#B3372C; --accent-soft:#F7E6E3; --accent-ink:#8E2A21;
+  --ok:#22704A; --ok-bg:#E2F1E7; --info:#2A5AA6; --info-bg:#E3EBF8;
+  --warn:#935207; --warn-bg:#FBEDDA; --pr:#6343A6; --pr-bg:#ECE6F7;
+  --radius:10px;
+  --font:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#131519; --surface:#1C1F24; --surface-2:#262A31; --ink:#EBECEE; --muted:#A3A8B1; --line:#343840;
+    --accent:#E57C71; --accent-soft:#3A2321; --accent-ink:#F3AAA1;
+    --ok:#72CC9A; --ok-bg:#16301F; --info:#8BADEB; --info-bg:#1A2641;
+    --warn:#EBA95E; --warn-bg:#37270F; --pr:#B79FEA; --pr-bg:#2B2342;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#131519; --surface:#1C1F24; --surface-2:#262A31; --ink:#EBECEE; --muted:#A3A8B1; --line:#343840;
+  --accent:#E57C71; --accent-soft:#3A2321; --accent-ink:#F3AAA1;
+  --ok:#72CC9A; --ok-bg:#16301F; --info:#8BADEB; --info-bg:#1A2641;
+  --warn:#EBA95E; --warn-bg:#37270F; --pr:#B79FEA; --pr-bg:#2B2342;
+}
+
+/* ===== 基础 ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.7}
+a{color:var(--accent-ink)}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3{line-height:1.3;text-wrap:balance;margin:0}
+h2{font-size:1.45rem;letter-spacing:.01em}
+h3{font-size:1.05rem}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lede{color:var(--muted);max-width:62ch}
+section{padding-block:40px;border-top:1px solid var(--line)}
+section > .wrap{display:grid;gap:20px}
+.sec-head{display:grid;gap:6px}
+
+/* ===== 顶部固定导航 ===== */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;white-space:nowrap}
+.brand svg{flex:none}
+.nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.85rem;padding:4px 10px;border-radius:999px}
+.nav a:hover{color:var(--ink);background:var(--surface-2)}
+
+/* 身份切换（分段控件） */
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.seg button{font:inherit;font-size:.85rem;border:0;background:transparent;color:var(--muted);padding:5px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg button:hover{color:var(--ink)}
+
+/* ===== Hero ===== */
+.hero{padding-block:44px 32px}
+.hero .wrap{display:grid;gap:18px}
+.hero h1{font-size:clamp(1.7rem,4.2vw,2.6rem);letter-spacing:.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted)}
+.notice{border:1px solid var(--line);border-left:3px solid var(--warn);background:var(--surface);padding:12px 14px;border-radius:6px;font-size:.9rem;color:var(--muted);max-width:72ch}
+.notice strong{color:var(--ink)}
+
+.id-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:6px}
+.id-card{font:inherit;text-align:left;cursor:pointer;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;gap:4px;transition:border-color .15s}
+.id-card:hover{border-color:var(--muted)}
+.id-card[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.id-card .t{font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:8px}
+.id-card .d{color:var(--muted);font-size:.88rem}
+.radio-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--muted);flex:none}
+.id-card[aria-pressed="true"] .radio-dot{border-color:var(--accent);background:radial-gradient(var(--accent) 45%,transparent 50%)}
+
+/* ===== 标签 ===== */
+.tag{display:inline-block;font-size:.72rem;font-weight:600;padding:1px 8px;border-radius:999px;white-space:nowrap;line-height:1.6}
+.tag.ok{color:var(--ok);background:var(--ok-bg)}
+.tag.info{color:var(--info);background:var(--info-bg)}
+.tag.warn{color:var(--warn);background:var(--warn-bg)}
+.tag.pr{color:var(--pr);background:var(--pr-bg)}
+.tag.plain{color:var(--muted);background:var(--surface-2)}
+
+/* ===== 问卷 ===== */
+.quiz{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:760px){.quiz{grid-template-columns:1fr}}
+.quiz form{display:grid;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+legend{font-weight:600;margin-bottom:6px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt label{display:inline-block;cursor:pointer;font-size:.88rem;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink)}
+.opt input:checked + label{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.opt input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+.result{background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--radius);padding:18px;display:grid;gap:10px;position:sticky;top:130px}
+@media (max-width:760px){.result{position:static}}
+.result h3{font-size:1.3rem;color:var(--accent-ink)}
+.result ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.9rem}
+.btn{font:inherit;font-size:.88rem;cursor:pointer;border-radius:8px;padding:7px 14px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;justify-self:start}
+.btn.ghost{background:transparent;color:var(--accent-ink)}
+.btn:hover{filter:brightness(1.06)}
+
+/* ===== 运营商分层 ===== */
+.matrix-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+.matrix caption{text-align:left;padding:12px 14px 0;color:var(--muted);font-size:.82rem}
+.matrix th,.matrix td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.matrix thead th{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.matrix tbody th{font-weight:600;white-space:nowrap}
+.matrix tr:last-child th,.matrix tr:last-child td{border-bottom:0}
+.matrix .dash{color:var(--muted)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:8px;align-content:start;transition:border-color .2s,box-shadow .2s}
+.tier.hl{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.tier .brands{font-size:.85rem;color:var(--muted)}
+.tier dl{margin:0;display:grid;gap:6px;font-size:.88rem}
+.tier dt{font-weight:600;font-size:.78rem;color:var(--muted)}
+.tier dd{margin:0}
+
+/* ===== 对比表 ===== */
+.controls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.chip{font:inherit;font-size:.84rem;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:4px 12px;border-radius:999px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+select{font:inherit;font-size:.86rem;padding:5px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.controls label{font-size:.84rem;color:var(--muted);display:flex;gap:6px;align-items:center}
+.count{font-size:.84rem;color:var(--muted);margin-left:auto}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table.plans{border-collapse:collapse;width:100%;min-width:980px;font-size:.88rem}
+table.plans caption{text-align:left;padding:12px 14px;color:var(--muted);font-size:.82rem;caption-side:bottom;border-top:1px solid var(--line)}
+table.plans th,table.plans td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.plans thead th{font-size:.76rem;color:var(--muted);font-weight:600;background:var(--surface-2);white-space:nowrap}
+table.plans td.price{white-space:nowrap;font-weight:700}
+table.plans td.price small{font-weight:400;color:var(--muted)}
+table.plans .carrier{font-weight:700}
+table.plans .sub{display:block;font-size:.78rem;color:var(--muted);font-weight:400}
+table.plans .tags{display:flex;flex-wrap:wrap;gap:4px}
+table.plans .note{color:var(--muted);font-size:.82rem;min-width:180px}
+table.plans tr.fit td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.tbd{color:var(--warn);font-weight:600;white-space:nowrap}
+table.plans td[data-label="套餐"]{min-width:120px}
+table.plans td[data-label="漫游"]{min-width:72px}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+@media (max-width:640px){
+  .table-scroll{border:0;background:transparent;overflow:visible}
+  table.plans,table.plans tbody,table.plans tr,table.plans td{display:block;width:100%;min-width:0}
+  table.plans thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.plans caption{display:block;border:0;padding:8px 0}
+  table.plans tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;padding:6px 0}
+  table.plans tr.fit{border-color:var(--accent)}
+  table.plans tr.fit td:first-child{box-shadow:none}
+  table.plans td,table.plans td[data-label]{min-width:0;border:0;padding:5px 14px;display:grid;grid-template-columns:88px minmax(0,1fr);gap:8px}
+  table.plans td::before{content:attr(data-label);font-size:.76rem;color:var(--muted);font-weight:600;padding-top:2px}
+  table.plans td.first{grid-template-columns:1fr}
+  table.plans td.first::before{content:none}
+  table.plans .note{min-width:0}
+}
+
+/* ===== 材料清单 ===== */
+.check-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.progress{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);flex:1 1 260px;max-width:420px}
+.bar{flex:1;height:8px;background:var(--surface-2);border-radius:999px;overflow:hidden;border:1px solid var(--line)}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+.checklist{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.checklist li{padding:12px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:22px minmax(0,1fr);gap:4px 12px}
+.checklist li:last-child{border-bottom:0}
+.checklist input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--ok);cursor:pointer}
+.checklist .item-t{display:flex;flex-wrap:wrap;gap:6px;align-items:center;cursor:pointer}
+.checklist li.done .item-t span.txt{text-decoration:line-through;color:var(--muted)}
+.checklist details{grid-column:2;font-size:.86rem;color:var(--muted)}
+.checklist summary{cursor:pointer;color:var(--accent-ink);font-size:.8rem;width:max-content}
+.checklist details p{padding-top:4px;max-width:70ch}
+
+/* ===== 流程时间线 ===== */
+.timeline{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:step}
+.timeline li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;position:relative;padding-bottom:22px}
+.timeline li::before{counter-increment:step;content:counter(step);width:30px;height:30px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);color:var(--accent-ink);font-weight:700;display:grid;place-items:center;font-size:.85rem;z-index:1}
+.timeline li::after{content:"";position:absolute;left:15px;top:30px;bottom:0;width:2px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline .when{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.timeline h3{margin-bottom:2px}
+.timeline p{color:var(--muted);font-size:.92rem;max-width:66ch}
+
+/* ===== 省钱与避坑 ===== */
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.tip h3{font-size:.98rem}
+.tip p{color:var(--muted);font-size:.9rem}
+.tip.alert{border-color:var(--warn);background:var(--warn-bg)}
+.tip.alert h3,.tip.alert p{color:var(--ink)}
+
+/* ===== FAQ ===== */
+.faq{display:grid;gap:8px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:0 16px}
+.faq summary{cursor:pointer;padding:13px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-weight:700;font-size:1.1rem;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding-bottom:14px;color:var(--muted);max-width:72ch}
+
+/* ===== 页脚 ===== */
+footer{border-top:1px solid var(--line);padding-block:32px 48px;background:var(--surface-2)}
+footer .wrap{display:grid;gap:14px;font-size:.86rem;color:var(--muted)}
+footer ul{margin:0;padding-left:1.1em;display:grid;gap:2px}
+footer h2{font-size:1rem;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="var(--accent)" d="M12 2l1.6 3.4 2.2-1-.5 4.1 2.8-2.3.6 1.8 3.3-.6-1.1 3.3 1.6.9-4.2 3.5.6 1.7-4.4-.8.2 4.9h-1.4l.2-4.9-4.4.8.6-1.7L3.4 12.6l1.6-.9-1.1-3.3 3.3.6.6-1.8 2.8 2.3-.5-4.1 2.2 1z"/></svg>
+      <span>手机套餐指南</span>
+    </div>
+    <div class="seg" role="group" aria-label="切换身份">
+      <button type="button" data-id="newcomer">新移民</button>
+      <button type="button" data-id="pr">PR 持有者</button>
+    </div>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#quiz">快速决策</a>
+      <a href="#tiers">运营商分层</a>
+      <a href="#compare">对比表</a>
+      <a href="#docs">材料清单</a>
+      <a href="#steps">办理流程</a>
+      <a href="#tips">省钱避坑</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ===== Hero ===== -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="badges">
+      <span class="badge num">数据整理：2026-09-28</span>
+      <span class="badge">价格单位：CAD / 月，税前</span>
+    </div>
+    <h1>加拿大手机套餐选择指南：<em>新移民</em> vs <em>PR 持有者</em></h1>
+    <p class="lede">刚落地没有信用记录，还是已经拿到 PR 卡住了几年？两种情况该选的品牌、要带的材料、办理顺序都不一样。先选你的身份，下面的推荐、清单和流程会跟着变。</p>
+    <div class="id-picker" role="group" aria-label="选择你的身份">
+      <button type="button" class="id-card" data-id="newcomer">
+        <span class="t"><span class="radio-dot"></span>我是新移民</span>
+        <span class="d">刚登陆的 PR（持 COPR，PR 卡未到）、工签或学签持有者。没有加拿大信用记录，需要尽快有本地号码。</span>
+      </button>
+      <button type="button" class="id-card" data-id="pr">
+        <span class="t"><span class="radio-dot"></span>我是 PR 持有者</span>
+        <span class="d">已有 PR 卡、省驾照和加拿大信用卡，建立了信用记录。更关心长期性价比、家庭共享和合约购机。</span>
+      </button>
+    </div>
+    <p class="notice"><strong>请注意：</strong>本页价格和优惠为 2026 年 9 月的市场参考，运营商会频繁调整。标注「待核实」的项目请以运营商官网或门店报价为准。本页不构成任何运营商的官方信息。</p>
+  </div>
+</div>
+
+<!-- ===== 快速决策 ===== -->
+<section id="quiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">快速决策</span>
+      <h2>回答 3 个问题，得到推荐方向</h2>
+    </div>
+    <div class="quiz">
+      <form id="quizForm" novalidate>
+        <fieldset>
+          <legend>1. 你有加拿大信用记录吗？</legend>
+          <div class="opts">
+            <span class="opt"><input type="radio" name="credit" id="c-no" value="no"><label for="c-no">没有</label></span>
+            <span class="opt"><input type="radio" name="credit" id="c-yes" value="yes"><label for="c-yes">有</label></span>
+            <span class="opt"><input type="radio" name="credit" id="c-unsure" value="unsure"><label for="c-unsure">不确定</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2. 每月预算（税前）？</legend>
+          <div class="opts">
+            <span class="opt"><input type="radio" name="budget" id="b-1" value="lt30"><label for="b-1" class="num">&lt; $30</label></span>
+            <span class="opt"><input type="radio" name="budget" id="b-2" value="30-50"><label for="b-2" class="num">$30–50</label></span>
+            <span class="opt"><input type="radio" name="budget" id="b-3" value="50-80"><label for="b-3" class="num">$50–80</label></span>
+            <span class="opt"><input type="radio" name="budget" id="b-4" value="gt80"><label for="b-4" class="num">&gt; $80</label></span>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>3. 你最看重什么？</legend>
+          <div class="opts">
+            <span class="opt"><input type="radio" name="prio" id="p-cheap" value="cheap"><label for="p-cheap">最便宜</label></span>
+            <span class="opt"><input type="radio" name="prio" id="p-cov" value="coverage"><label for="p-cov">信号覆盖（含郊区、北部）</label></span>
+            <span class="opt"><input type="radio" name="prio" id="p-roam" value="roaming"><label for="p-roam">美国 / 国际漫游</label></span>
+            <span class="opt"><input type="radio" name="prio" id="p-dev" value="device"><label for="p-dev">合约分期买手机</label></span>
+            <span class="opt"><input type="radio" name="prio" id="p-fam" value="family"><label for="p-fam">家庭多号共享</label></span>
+          </div>
+        </fieldset>
+      </form>
+      <div class="result" id="quizResult" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 运营商分层 ===== -->
+<section id="tiers">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">运营商分层</span>
+      <h2>同一张网络，不同的品牌和价格</h2>
+      <p class="lede">加拿大大部分品牌都跑在四家网络上。子品牌和预付费品牌用的是母公司的基站，信号覆盖基本一样，差别在价格、客服和优惠条件。</p>
+    </div>
+    <div class="matrix-scroll">
+      <table class="matrix">
+        <caption>按网络所有者和品牌层级划分</caption>
+        <thead>
+          <tr><th scope="col">层级</th><th scope="col">Rogers 网络</th><th scope="col">Bell 网络</th><th scope="col">Telus 网络</th><th scope="col">Quebecor（Videotron）</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">一级品牌</th><td>Rogers</td><td>Bell</td><td>Telus</td><td>Videotron（魁北克）</td></tr>
+          <tr><th scope="row">二级品牌</th><td>Fido</td><td>Virgin Plus</td><td>Koodo</td><td>Freedom Mobile（独立运营商）</td></tr>
+          <tr><th scope="row">预付费品牌</th><td>Chatr</td><td>Lucky Mobile</td><td>Public Mobile</td><td>Fizz</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tiers">
+      <article class="tier" data-tier="big3">
+        <h3>一级品牌</h3>
+        <p class="brands">Rogers · Bell · Telus</p>
+        <dl>
+          <dt>特点</dt><dd>覆盖最广、价格最高，可合约购机，都有 newcomer 项目。</dd>
+          <dt>适合</dt><dd>住郊区或经常跑长途、要分期买新手机、要捆绑家庭宽带的人。</dd>
+          <dt>不太适合</dt><dd>预算紧、只在市区活动的人。</dd>
+        </dl>
+      </article>
+      <article class="tier" data-tier="flanker">
+        <h3>二级品牌</h3>
+        <p class="brands">Fido · Virgin Plus · Koodo</p>
+        <dl>
+          <dt>特点</dt><dd>用母公司网络，价格中等，也有 newcomer 项目和手机分期。</dd>
+          <dt>适合</dt><dd>想要大网络信号、又不想付一级品牌价格的人。</dd>
+          <dt>不太适合</dt><dd>需要最新旗舰机高额补贴的人。</dd>
+        </dl>
+      </article>
+      <article class="tier" data-tier="prepaid">
+        <h3>预付费品牌</h3>
+        <p class="brands">Chatr · Lucky Mobile · Public Mobile · Fizz</p>
+        <dl>
+          <dt>特点</dt><dd>不做信用审核、无合约、价格最低，客服多在线上。</dd>
+          <dt>适合</dt><dd>刚落地的新移民、学生、自带手机（BYOD）的人。</dd>
+          <dt>不太适合</dt><dd>需要门店服务或合约购机的人。</dd>
+        </dl>
+      </article>
+      <article class="tier" data-tier="independent">
+        <h3>独立运营商</h3>
+        <p class="brands">Freedom Mobile · Videotron</p>
+        <dl>
+          <dt>特点</dt><dd>价格激进，常含美国 / 墨西哥漫游；对新移民审批较宽松。</dd>
+          <dt>适合</dt><dd>住大城市、常去美国、想要大流量的人。</dd>
+          <dt>不太适合</dt><dd>住郊区或北部地区的人，办理前先查覆盖地图并实测室内信号。</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 套餐对比表 ===== -->
+<section id="compare">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">套餐对比</span>
+      <h2>参考套餐对比表</h2>
+      <p class="lede">左侧红线标记的是适合你当前身份的选项。标注「待核实」的价格请以官网为准。</p>
+    </div>
+    <div class="controls">
+      <button type="button" class="chip" data-filter="fit" aria-pressed="true">只看适合我的</button>
+      <button type="button" class="chip" data-filter="nocredit" aria-pressed="false">免信用审核</button>
+      <button type="button" class="chip" data-filter="us" aria-pressed="false">含美国漫游 / 通话</button>
+      <button type="button" class="chip" data-filter="g5" aria-pressed="false">5G</button>
+      <label for="tierSel">层级
+        <select id="tierSel">
+          <option value="all">全部</option>
+          <option value="newcomer">Newcomer 专享</option>
+          <option value="postpaid">一级 + 二级品牌</option>
+          <option value="prepaid">预付费品牌</option>
+          <option value="independent">独立运营商</option>
+        </select>
+      </label>
+      <label for="sortSel">排序
+        <select id="sortSel">
+          <option value="default">默认</option>
+          <option value="price">月费 低 → 高</option>
+          <option value="data">流量 高 → 低</option>
+        </select>
+      </label>
+      <span class="count num" id="planCount"></span>
+    </div>
+    <div class="table-scroll">
+      <table class="plans">
+        <caption>价格为 CAD / 月、税前（另加 GST/HST 或 PST）。数据来源见页脚，2026-09-28 整理。</caption>
+        <thead>
+          <tr>
+            <th scope="col">运营商 / 层级</th>
+            <th scope="col">套餐</th>
+            <th scope="col">月费</th>
+            <th scope="col">流量</th>
+            <th scope="col">网络</th>
+            <th scope="col">漫游</th>
+            <th scope="col">信用审核</th>
+            <th scope="col">适用身份</th>
+            <th scope="col">备注</th>
+          </tr>
+        </thead>
+        <tbody id="planBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 材料清单 ===== -->
+<section id="docs">
+  <div class="wrap">
+    <div class="check-head">
+      <div class="sec-head">
+        <span class="eyebrow">办理材料</span>
+        <h2 id="docsTitle">材料清单</h2>
+      </div>
+      <div class="progress" aria-live="polite">
+        <div class="bar" role="progressbar" aria-label="材料准备进度" aria-valuemin="0" aria-valuemax="100" id="progBar"><i id="progFill"></i></div>
+        <span class="num" id="progText">0%</span>
+      </div>
+    </div>
+    <ul class="checklist" id="checklist"></ul>
+    <button type="button" class="btn ghost" id="resetChecks">清空勾选</button>
+  </div>
+</section>
+
+<!-- ===== 办理流程 ===== -->
+<section id="steps">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">办理流程</span>
+      <h2 id="stepsTitle">办理顺序</h2>
+    </div>
+    <ol class="timeline" id="timeline"></ol>
+  </div>
+</section>
+
+<!-- ===== 省钱技巧与避坑 ===== -->
+<section id="tips">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">省钱与避坑</span>
+      <h2>省钱技巧和常见陷阱</h2>
+    </div>
+    <div class="tips" id="tipsGrid"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">常见问题</span>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq">
+      <details><summary>没有 SIN 能办手机卡吗？</summary><p>可以。预付费品牌只需要身份证件和支付方式。后付费的信用审核通常也可以用护照、驾照等其他证件完成，SIN 不是办手机的必需项，除非你自己愿意，不要随意提供。</p></details>
+      <details><summary>PR 卡还没寄到，只有 COPR，能办 newcomer 优惠吗？</summary><p>多数运营商的 newcomer 项目接受 COPR 加护照作为身份证明，窗口期从 COPR 上的登陆日期算起。每家条件不同，办理前请在运营商官网的 Newcomers 页面或门店确认。</p></details>
+      <details><summary>学签 / 工签到期后，手机合约怎么办？</summary><p>账户本身可以继续使用，但部分运营商会把手机分期期限限制在签证有效期内。签证快到期又要买手机时，优先选自带手机（BYOD）或预付费，避免离境时要一次性结清机器余款。</p></details>
+      <details><summary>可以继续用国内带来的手机吗？</summary><p>可以，前提是手机已解锁并支持北美常用频段（例如 LTE Band 2 / 4 / 5 / 12 / 13 / 66 / 71）。国内运营商合约机可能被锁，出发前请联系原运营商解锁，并在手机规格页确认频段。</p></details>
+      <details><summary>eSIM 和实体 SIM 怎么选？</summary><p>手机支持 eSIM 时，落地前就能在线购买并激活，省去找门店的时间，还能保留国内号码的实体卡接收验证码。手机不支持 eSIM，就在机场或商场门店买实体 SIM。</p></details>
+      <details><summary>押金多久能退？</summary><p>没有信用记录又不符合 newcomer 项目时，后付费通常要交 $150–$300 可退押金。常见做法是按时缴费约 12 个月后退还或抵扣账单，具体以合同条款为准。</p></details>
+      <details><summary>家庭计划（多号码）怎样更省？</summary><p>大多数后付费品牌对第二、第三条线有折扣，主账户人需要通过信用审核。家里刚落地的成员较多时，可以先用预付费过渡，等主账户人有信用记录后再合并成家庭计划。</p></details>
+      <details><summary>怎样携号转网（Port-in）？</summary><p>直接在新运营商开户时选择「转入现有号码」，提供原运营商账号、账户 PIN 或转网授权码，以及手机 IMEI。转网完成后旧账户会自动关闭。不要先去原运营商注销号码，否则号码会被收回，无法再转。</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="wrap">
+    <h2>数据来源</h2>
+    <ul>
+      <li><a href="https://www.telus.com/en/newcomers-to-canada" target="_blank" rel="noopener">TELUS – Newcomers to Canada</a></li>
+      <li><a href="https://www.koodomobile.com/en/services/newcomers-to-canada" target="_blank" rel="noopener">Koodo – Newcomers to Canada</a></li>
+      <li><a href="https://crtc.gc.ca" target="_blank" rel="noopener">CRTC 加拿大广播电视和电信委员会</a></li>
+      <li><a href="https://www.planhub.ca/" target="_blank" rel="noopener">PlanHub 套餐比价</a></li>
+      <li><a href="https://moving2canada.com/living/utilities/cell-phone-plan-in-canada/" target="_blank" rel="noopener">Moving2Canada – Canada Cell Phone Plans: A Newcomer's Complete Guide (2026)</a></li>
+      <li><a href="https://welcomeaide.com/en/blog/canadian-phone-plan-comparison-newcomers-2026" target="_blank" rel="noopener">WelcomeAide – Canadian Phone Plan Comparison for Newcomers (2026)</a></li>
+    </ul>
+    <p class="num">最后更新：2026-09-28</p>
+    <p>免责声明：本页为信息整理，不隶属于任何运营商或政府机构。套餐价格、流量、优惠条件和资格规定可能随时变化，请在办理前以运营商官网、门店和 CRTC 公告为准。</p>
+  </div>
+</footer>
+
+<script>
+/* ===================================================================
+   套餐数据 PLANS —— 更新价格时只改这里
+   priceCAD / dataGB 为 null 时显示「待核实」
+   =================================================================== */
+const PLANS = [
+  { carrier:"Telus", tier:"big3", network:"Telus", planName:"Newcomer 专享套餐", priceCAD:55, pricePrefix:"约", dataGB:100, speed:"5G",
+    roaming:"", creditCheck:false, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"登陆后一定期限内的 PR、工签、学签持有者，期限以官网为准",
+    notes:"约 100 GB 加附加福利；与安置机构合作有推荐优惠", sourceUrl:"https://www.telus.com/en/newcomers-to-canada" },
+  { carrier:"Rogers", tier:"big3", network:"Rogers", planName:"Newcomer 项目 / 标准后付费", priceCAD:null, dataGB:null, speed:"5G",
+    roaming:"", creditCheck:true, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"newcomer 项目在窗口期内免加拿大信用审核",
+    notes:"覆盖最广之一，可合约购机", sourceUrl:"" },
+  { carrier:"Bell", tier:"big3", network:"Bell", planName:"Newcomer 项目 / 标准后付费", priceCAD:null, dataGB:null, speed:"5G",
+    roaming:"", creditCheck:true, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"newcomer 项目在窗口期内免加拿大信用审核",
+    notes:"可与家庭宽带、电视捆绑", sourceUrl:"" },
+  { carrier:"Fido", tier:"flanker", network:"Rogers", planName:"Newcomer 项目 / 后付费", priceCAD:null, dataGB:null, speed:"待核实",
+    roaming:"", creditCheck:true, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"newcomer 项目在窗口期内免加拿大信用审核",
+    notes:"Rogers 子品牌，价格低于一级品牌", sourceUrl:"" },
+  { carrier:"Virgin Plus", tier:"flanker", network:"Bell", planName:"Newcomer 项目 / 后付费", priceCAD:null, dataGB:null, speed:"待核实",
+    roaming:"", creditCheck:true, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"newcomer 项目在窗口期内免加拿大信用审核",
+    notes:"Bell 子品牌，常有会员福利", sourceUrl:"" },
+  { carrier:"Koodo", tier:"flanker", network:"Telus", planName:"Newcomer 项目 / 后付费", priceCAD:null, dataGB:null, speed:"待核实",
+    roaming:"", creditCheck:true, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"有专门的 newcomer 页面，条件以官网为准",
+    notes:"Telus 子品牌", sourceUrl:"https://www.koodomobile.com/en/services/newcomers-to-canada" },
+  { carrier:"Freedom Mobile", tier:"independent", network:"Freedom", planName:"Total Freedom 5G+", priceCAD:35, pricePrefix:"起", dataGB:null, speed:"5G+",
+    roaming:"加拿大-美国-墨西哥", creditCheck:false, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
+    eligibilityNote:"对新移民审批最宽松，后付费可按类似预付费条件开通",
+    notes:"含加美墨漫游，有 Price Freeze 价格锁定承诺；郊区请先查覆盖", sourceUrl:"" },
+  { carrier:"Public Mobile", tier:"prepaid", network:"Telus", planName:"预付费套餐", priceCAD:35, pricePrefix:"约", dataGB:30, speed:"待核实",
+    roaming:"含美国通话", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    eligibilityNote:"无需信用记录", notes:"纯线上办理与客服，无合约", sourceUrl:"" },
+  { carrier:"Lucky Mobile", tier:"prepaid", network:"Bell", planName:"预付费套餐", priceCAD:25, pricePrefix:"约", dataGB:20, dataNote:"20–25 GB", speed:"待核实",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    eligibilityNote:"无需信用记录", notes:"Bell 旗下预付费，门店和便利店可买卡", sourceUrl:"" },
+  { carrier:"Chatr", tier:"prepaid", network:"Rogers", planName:"预付费套餐", priceCAD:25, pricePrefix:"约", dataGB:20, dataNote:"20–25 GB", speed:"待核实",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    eligibilityNote:"无需信用记录", notes:"Rogers 旗下预付费", sourceUrl:"" },
+  { carrier:"Fizz", tier:"prepaid", network:"Videotron", planName:"预付费套餐", priceCAD:32, pricePrefix:"约", dataGB:25, speed:"待核实",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    eligibilityNote:"无需信用记录", notes:"主要服务魁北克及部分省份，有推荐码奖励", sourceUrl:"" }
+];
+
+const TIER_LABEL = { big3:"一级品牌", flanker:"二级品牌", prepaid:"预付费", independent:"独立运营商" };
+
+/* ===== 材料清单数据 ===== */
+const CHECKLISTS = {
+  newcomer: [
+    { id:"passport", t:"有效护照", need:"必备", why:"所有运营商都要求的主身份证件，用于实名开户。" },
+    { id:"status", t:"身份文件其一：COPR / Work Permit / Study Permit", need:"必备", why:"证明你的移民身份和登陆日期。Newcomer 优惠按登陆日期计算窗口期，COPR 或签证上的日期就是依据。" },
+    { id:"address", t:"加拿大地址（临时住址也可以）", need:"必备", why:"用于账单寄送和 911 紧急服务定位。Airbnb、朋友家、酒店地址通常都被接受，搬家后在账户里更新即可。" },
+    { id:"payment", t:"支付方式：信用卡或借记卡", need:"必备", why:"后付费需要绑定自动扣款，国内发行的 Visa / Mastercard 信用卡多数可用。预付费也可以在便利店买充值卡。" },
+    { id:"phone", t:"确认手机已解锁，支持北美频段和 eSIM", need:"必备", why:"国内合约机可能被锁。北美常用 LTE 频段包括 Band 2 / 4 / 5 / 12 / 13 / 66 / 71，出发前在手机规格页确认。" },
+    { id:"photoid2", t:"第二张带照片的证件（省驾照 / 省 ID / 国际驾照）", need:"建议", why:"部分门店要求两种 ID。刚落地还没有省证件时，带上国内驾照和国际驾照（或翻译件）备用。" },
+    { id:"deposit", t:"备好 $150–$300 押金", need:"视情况", why:"不符合 newcomer 项目又想办后付费时，三大运营商通常收取可退押金，约 12 个月按时缴费后退还。" },
+    { id:"letter", t:"雇佣信 / 录取信", need:"可选", why:"工签、学签持有者申请部分 newcomer 项目时可以作为补充材料。" },
+    { id:"sin", t:"SIN（不要随意提供）", need:"可选", why:"办手机不需要 SIN。信用审核可以用其他证件完成，SIN 只在你本人愿意时提供。" }
+  ],
+  pr: [
+    { id:"prcard", t:"PR 卡（Permanent Resident Card）", need:"必备", why:"身份证明。PR 卡过期不影响 PR 身份，但门店可能要求有效证件，这时带上护照。" },
+    { id:"provid", t:"省驾照或省 ID", need:"必备", why:"第二张带照片的证件，也用于核对地址。" },
+    { id:"cc", t:"加拿大信用卡", need:"必备", why:"用于信用审核和自动扣款。良好的还款记录能拿到更好的套餐和更高的合约购机额度。" },
+    { id:"window", t:"查一下登陆日期是否仍在 newcomer 窗口期内", need:"建议", why:"很多 newcomer 项目覆盖登陆后 24–36 个月，PR 仍可能符合。过了窗口期就按标准后付费比价。" },
+    { id:"port", t:"携号转网资料：原运营商账号、账户 PIN、IMEI", need:"转网时", why:"保留原号码需要这些信息。先在新运营商办理转入，不要先注销旧号，否则号码会被收回。" },
+    { id:"proof", t:"住址证明（水电账单 / 银行对账单）", need:"视情况", why:"部分门店核对地址时需要，线上开户通常不需要。" },
+    { id:"sin2", t:"SIN（仅在明确需要时提供）", need:"可选", why:"信用审核可以用驾照等其他证件替代。" }
+  ]
+};
+const NEED_TAG = { "必备":"warn", "建议":"info", "视情况":"plain", "可选":"plain", "转网时":"pr" };
+
+/* ===== 办理流程数据 ===== */
+const TIMELINES = {
+  newcomer: [
+    { when:"落地前", t:"准备号码", d:"手机支持 eSIM 就在线买预付费 eSIM，落地开机即用；否则计划在机场或商场门店买实体 SIM。确认手机已解锁。" },
+    { when:"落地当天", t:"激活本地号码", d:"在机场或商场门店激活。开银行账户、办 SIN、租房、求职都要填本地号码。" },
+    { when:"第 1 周", t:"用号码办其他手续", d:"开银行账户、办 SIN、登记租房和求职资料。保留国内号码接收验证码。" },
+    { when:"第 1–3 个月", t:"评估是否转后付费", d:"用了一段时间预付费后，对比 newcomer 后付费方案的流量、家庭共享和手机分期，决定是否转换。" },
+    { when:"第 6–12 个月", t:"建立信用", d:"申请信用卡并按时还款。交过押金的，按合同约 12 个月后退还或抵扣账单。" }
+  ],
+  pr: [
+    { when:"办理前", t:"比价", d:"用 PlanHub 等比价网站，加上各运营商官网的线上专享价一起看。" },
+    { when:"办理前", t:"查 newcomer 窗口期", d:"登陆不满 24–36 个月的 PR 可能仍有 newcomer 优惠，先按登陆日期问一下。" },
+    { when:"办理当天", t:"携号转网或合约购机", d:"自带手机（BYOD）通常比合约便宜。需要换机时对比分期总价，而不是只看月费。" },
+    { when:"开通后", t:"设置自动扣款", d:"避免逾期影响信用分。部分运营商对自动扣款有折扣，以官网为准。" },
+    { when:"每年", t:"重新比价", d:"黑五、节礼日、返校季价格最低。合约到期前可以联系运营商谈续约优惠。" }
+  ]
+};
+
+/* ===== 省钱与避坑数据 ===== */
+const TIPS = {
+  common: [
+    { t:"黑五、节礼日、返校季最便宜", d:"11 月黑五、12 月 26 日节礼日和 8–9 月返校季通常是全年最低价，不急的话等这几个时间点。" },
+    { t:"线上专享价和 BYOD", d:"官网线上专享价常比门店低，自带手机（BYOD）比合约购机的月费便宜。" },
+    { t:"2026 年 CRTC 新规", d:"2026 年 6 月 12 日起，运营商不得收取套餐激活费、改套餐 / 升级费和解约费。合约购机提前解约仍需结清机器余款。以 CRTC 最新公告为准。", alert:true },
+    { t:"防诈骗", d:"运营商、IRCC、CRA 都不会打电话向你索要 SIN、验证码或要求用礼品卡付款。接到这类电话直接挂断，再拨打官网上的号码核实。", alert:true }
+  ],
+  newcomer: [
+    { t:"先预付费，再转后付费", d:"落地先用预付费拿号码，住址和工作稳定后再比较 newcomer 后付费方案，避免一开始就签不合适的合约。" },
+    { t:"用推荐码和自动充值折扣", d:"Public Mobile、Fizz 等预付费品牌有推荐码奖励和自动充值折扣，向身边朋友要推荐码。" },
+    { t:"住郊区先查覆盖", d:"住在郊区、小镇或北部地区时，优先考虑 Rogers、Bell、Telus 网络上的品牌；独立运营商先查覆盖地图。" }
+  ],
+  pr: [
+    { t:"合约到期主动谈价", d:"合约快到期时联系运营商，说明准备转网，常能拿到续约优惠。" },
+    { t:"合并家庭计划", d:"多条线合并到一个账户通常更便宜，也可以和家庭宽带捆绑打折。" },
+    { t:"算清分期总价", d:"合约购机看的是 24 个月总价（机器分期加套餐），不是首月价格或「$0 首付」。" }
+  ]
+};
+
+/* ===== 推荐结果数据 ===== */
+const RECS = {
+  prepaid: { title:"预付费子品牌", brands:"Public Mobile、Lucky Mobile、Chatr、Fizz", tier:"prepaid", hl:["prepaid"],
+    why:"不做信用审核，没有合约，月费最低，适合先拿到本地号码。" },
+  newcomer: { title:"Newcomer 后付费优惠", brands:"Rogers、Bell、Telus、Fido、Virgin Plus、Koodo、Freedom 的 newcomer 项目", tier:"newcomer", hl:["big3","flanker"],
+    why:"在窗口期内免加拿大信用审核，可以用大网络、办家庭计划或分期买手机。" },
+  standard: { title:"标准后付费 + 合约购机", brands:"Rogers、Bell、Telus 及 Fido、Virgin Plus、Koodo", tier:"postpaid", hl:["big3","flanker"],
+    why:"你已有信用记录，可以走正常审核，拿到手机分期、家庭多线折扣和最好的信号覆盖。" },
+  independent: { title:"独立运营商", brands:"Freedom Mobile（魁北克可看 Videotron）", tier:"independent", hl:["independent"],
+    why:"常含美国 / 墨西哥漫游，价格有竞争力，对新移民审批较宽松。住郊区的话先查覆盖。" }
+};
+
+/* ===== 安全的 localStorage ===== */
+const store = {
+  get(k, fallback){ try { const v = localStorage.getItem(k); return v === null ? fallback : JSON.parse(v); } catch(e){ return fallback; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+/* ===== 状态 ===== */
+const state = {
+  identity: store.get("cpg.identity", "newcomer") === "pr" ? "pr" : "newcomer",
+  filters: { fit:true, nocredit:false, us:false, g5:false },
+  tier: "all",
+  sort: "default",
+  checks: store.get("cpg.checks", { newcomer:{}, pr:{} })
+};
+if (!state.checks || typeof state.checks !== "object") state.checks = { newcomer:{}, pr:{} };
+state.checks.newcomer = state.checks.newcomer || {};
+state.checks.pr = state.checks.pr || {};
+
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ===== 身份切换 ===== */
+function setIdentity(id, fromUser){
+  state.identity = id;
+  store.set("cpg.identity", id);
+  $$("[data-id]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.id === id)));
+  if (fromUser) {
+    const credit = id === "pr" ? "yes" : "no";
+    const el = document.querySelector(`input[name="credit"][value="${credit}"]`);
+    if (el) el.checked = true;
+  }
+  $("#docsTitle").textContent = id === "pr" ? "PR 持有者材料清单" : "新移民材料清单";
+  $("#stepsTitle").textContent = id === "pr" ? "PR 持有者办理顺序" : "新移民办理顺序：从落地前到第一年";
+  renderQuiz(); renderTable(); renderChecklist(); renderTimeline(); renderTips();
+}
+
+/* ===== 问卷 ===== */
+function recommend(credit, budget, prio){
+  const noCredit = credit !== "yes";
+  const reasons = [];
+  let key;
+  if (budget === "lt30") {
+    key = "prepaid";
+    reasons.push("预算低于 $30 时，预付费品牌基本是唯一选择。");
+    if (prio === "roaming") reasons.push("需要美国通话可以看 Public Mobile 含美国通话的套餐。");
+  } else if (prio === "cheap") {
+    key = "prepaid";
+    reasons.push("按性价比，预付费品牌每 GB 价格最低。");
+  } else if (prio === "roaming") {
+    key = "independent";
+    reasons.push("Freedom Mobile 的 5G+ 套餐含加拿大、美国、墨西哥漫游。");
+  } else if (prio === "coverage" || prio === "device" || prio === "family") {
+    key = noCredit ? "newcomer" : "standard";
+    if (prio === "coverage") reasons.push("三大网络在郊区和北部覆盖最好。");
+    if (prio === "device") reasons.push("手机分期需要后付费账户。");
+    if (prio === "family") reasons.push("多线折扣只在后付费账户里有。");
+    if (noCredit) reasons.push("没有信用记录，用 newcomer 项目免审核开户；不符合条件时可交 $150–$300 押金。");
+  } else {
+    key = noCredit ? "prepaid" : "standard";
+  }
+  if (credit === "unsure") reasons.push("不确定是否有信用记录时，先按「没有」准备材料，门店审核后再定。");
+  if (state.identity === "pr" && noCredit && key === "newcomer") reasons.push("PR 持有者请先确认登陆日期仍在 newcomer 窗口期内。");
+  return { key, reasons };
+}
+
+function renderQuiz(){
+  const f = $("#quizForm");
+  const credit = (f.querySelector('input[name="credit"]:checked') || {}).value || "no";
+  const budget = (f.querySelector('input[name="budget"]:checked') || {}).value || "30-50";
+  const prio = (f.querySelector('input[name="prio"]:checked') || {}).value || "cheap";
+  const { key, reasons } = recommend(credit, budget, prio);
+  const r = RECS[key];
+  $("#quizResult").innerHTML = `
+    <span class="eyebrow">推荐方向</span>
+    <h3>${esc(r.title)}</h3>
+    <p>${esc(r.why)}</p>
+    <p class="brands" style="color:var(--muted);font-size:.88rem">看这些品牌：${esc(r.brands)}</p>
+    ${reasons.length ? `<ul>${reasons.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+    <button type="button" class="btn" id="goCompare">在对比表中查看</button>`;
+  $$(".tier").forEach(t => t.classList.toggle("hl", r.hl.includes(t.dataset.tier)));
+  $("#goCompare").addEventListener("click", () => {
+    state.tier = r.tier; $("#tierSel").value = r.tier;
+    renderTable();
+    $("#compare").scrollIntoView();
+  });
+}
+
+/* ===== 对比表 ===== */
+function fitsIdentity(p){
+  if (state.identity === "newcomer") return !p.creditCheck || p.newcomerOffer;
+  return p.audience.includes("pr");
+}
+function hasUS(p){ return /美国/.test(p.roaming); }
+function renderTable(){
+  let rows = PLANS.slice();
+  const F = state.filters;
+  if (F.fit) rows = rows.filter(fitsIdentity);
+  if (F.nocredit) rows = rows.filter(p => !p.creditCheck);
+  if (F.us) rows = rows.filter(hasUS);
+  if (F.g5) rows = rows.filter(p => /5G/.test(p.speed));
+  if (state.tier === "newcomer") rows = rows.filter(p => p.newcomerOffer && !p.prepaid);
+  else if (state.tier === "postpaid") rows = rows.filter(p => p.tier === "big3" || p.tier === "flanker");
+  else if (state.tier !== "all") rows = rows.filter(p => p.tier === state.tier);
+  const nullLast = (a, b, k, dir) => {
+    if (a[k] == null && b[k] == null) return 0;
+    if (a[k] == null) return 1;
+    if (b[k] == null) return -1;
+    return dir * (a[k] - b[k]);
+  };
+  if (state.sort === "price") rows.sort((a, b) => nullLast(a, b, "priceCAD", 1));
+  if (state.sort === "data") rows.sort((a, b) => nullLast(a, b, "dataGB", -1));
+
+  $("#planCount").textContent = `显示 ${rows.length} / ${PLANS.length} 条`;
+  const body = $("#planBody");
+  if (!rows.length) { body.innerHTML = `<tr><td colspan="9" class="empty">没有符合条件的套餐，试着取消一些筛选。</td></tr>`; return; }
+  body.innerHTML = rows.map(p => {
+    const price = p.priceCAD == null ? `<span class="tbd">待核实</span>`
+      : `${p.pricePrefix === "约" ? "<small>约 </small>" : ""}$${p.priceCAD}${p.pricePrefix === "起" ? "<small> 起</small>" : ""}`;
+    const data = p.dataGB == null ? `<span class="tbd">待核实</span>`
+      : (p.dataGB === Infinity ? "无限（超量降速）" : esc(p.dataNote || p.dataGB + " GB"));
+    const speed = p.speed === "待核实" ? `<span class="tbd">待核实</span>` : esc(p.speed);
+    const credit = p.creditCheck
+      ? (p.newcomerOffer ? `<span class="tag info">Newcomer 可免</span> <span class="tag warn">否则需押金</span>` : `<span class="tag warn">需要</span>`)
+      : `<span class="tag ok">免信用审核</span>`;
+    const aud = [
+      p.audience.includes("newcomer") ? `<span class="tag info">新移民</span>` : "",
+      p.audience.includes("pr") ? `<span class="tag pr">PR</span>` : "",
+      p.newcomerOffer && !p.prepaid ? `<span class="tag info">Newcomer 专享</span>` : "",
+      p.prepaid ? `<span class="tag plain">预付费</span>` : ""
+    ].join("");
+    const link = p.sourceUrl ? ` <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">官网</a>` : "";
+    return `<tr class="${fitsIdentity(p) ? "fit" : ""}">
+      <td class="first"><span class="carrier">${esc(p.carrier)}</span><span class="sub">${TIER_LABEL[p.tier]} · ${esc(p.network)} 网络</span></td>
+      <td data-label="套餐">${esc(p.planName)}</td>
+      <td data-label="月费" class="price num">${price}</td>
+      <td data-label="流量" class="num">${data}</td>
+      <td data-label="网络">${speed}</td>
+      <td data-label="漫游">${p.roaming ? esc(p.roaming) : `<span style="color:var(--muted)">—</span>`}</td>
+      <td data-label="信用审核"><span class="tags">${credit}</span></td>
+      <td data-label="适用身份"><span class="tags">${aud}</span></td>
+      <td data-label="备注" class="note">${esc(p.notes)}。${esc(p.eligibilityNote)}。${link}</td>
+    </tr>`;
+  }).join("");
+}
+
+/* ===== 材料清单 ===== */
+function renderChecklist(){
+  const id = state.identity, items = CHECKLISTS[id], done = state.checks[id];
+  $("#checklist").innerHTML = items.map(it => `
+    <li class="${done[it.id] ? "done" : ""}">
+      <input type="checkbox" id="ck-${id}-${it.id}" data-k="${it.id}" ${done[it.id] ? "checked" : ""}>
+      <label class="item-t" for="ck-${id}-${it.id}"><span class="txt">${esc(it.t)}</span><span class="tag ${NEED_TAG[it.need]}">${esc(it.need)}</span></label>
+      <details><summary>为什么需要</summary><p>${esc(it.why)}</p></details>
+    </li>`).join("");
+  updateProgress();
+}
+function updateProgress(){
+  const id = state.identity, items = CHECKLISTS[id];
+  const n = items.filter(it => state.checks[id][it.id]).length;
+  const pct = Math.round(n / items.length * 100);
+  $("#progFill").style.width = pct + "%";
+  $("#progBar").setAttribute("aria-valuenow", pct);
+  $("#progText").textContent = `${n} / ${items.length} · ${pct}%`;
+}
+
+/* ===== 流程与技巧 ===== */
+function renderTimeline(){
+  $("#timeline").innerHTML = TIMELINES[state.identity].map(s => `
+    <li><div><span class="when">${esc(s.when)}</span><h3>${esc(s.t)}</h3><p>${esc(s.d)}</p></div></li>`).join("");
+}
+function renderTips(){
+  const list = TIPS[state.identity].concat(TIPS.common);
+  $("#tipsGrid").innerHTML = list.map(t => `
+    <article class="tip${t.alert ? " alert" : ""}"><h3>${esc(t.t)}</h3><p>${esc(t.d)}</p></article>`).join("");
+}
+
+/* ===== 事件绑定 ===== */
+$$("[data-id]").forEach(b => b.addEventListener("click", () => setIdentity(b.dataset.id, true)));
+$("#quizForm").addEventListener("change", renderQuiz);
+$("#quizForm").addEventListener("submit", e => e.preventDefault());
+$$(".chip[data-filter]").forEach(c => c.addEventListener("click", () => {
+  const k = c.dataset.filter;
+  state.filters[k] = !state.filters[k];
+  c.setAttribute("aria-pressed", String(state.filters[k]));
+  renderTable();
+}));
+$("#tierSel").addEventListener("change", e => { state.tier = e.target.value; renderTable(); });
+$("#sortSel").addEventListener("change", e => { state.sort = e.target.value; renderTable(); });
+$("#checklist").addEventListener("change", e => {
+  if (!e.target.matches("input[type=checkbox]")) return;
+  state.checks[state.identity][e.target.dataset.k] = e.target.checked;
+  e.target.closest("li").classList.toggle("done", e.target.checked);
+  store.set("cpg.checks", state.checks);
+  updateProgress();
+});
+$("#resetChecks").addEventListener("click", () => {
+  state.checks[state.identity] = {};
+  store.set("cpg.checks", state.checks);
+  renderChecklist();
+});
+
+/* ===== 初始化：预填一组示例答案，页面打开即显示推荐 ===== */
+(function init(){
+  const credit = state.identity === "pr" ? "yes" : "no";
+  $(`input[name="credit"][value="${credit}"]`).checked = true;
+  $('input[name="budget"][value="30-50"]').checked = true;
+  $('input[name="prio"][value="cheap"]').checked = true;
+  setIdentity(state.identity, false);
+})();
+</script>
+</body>
+</html>
