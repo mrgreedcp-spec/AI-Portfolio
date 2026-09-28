@@ -165,10 +165,10 @@ B. 已持有 PR 卡的永久居民（PR Holder）
 |---|---|---|---|---|---|---|---|
 | Rogers | 一级 | Rogers | 60 起（Basic；Essentials ~65） | 60 GB（Essentials 100 GB） | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，覆盖最好 |
 | Bell | 一级 | Bell | ~70（5G+ Essentials，原价 90） | 100 GB | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，可捆绑家庭宽带 |
-| Telus | 一级 | Telus | ~55 | ~100 GB + 附加福利 | Newcomer 项目可免 | 新移民 / PR | 与安置机构合作有推荐优惠 |
-| Fido | 二级 | Rogers | 45 起（60 GB ~50） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Rogers 子品牌 |
-| Virgin Plus | 二级 | Bell | ~45（60 GB ~50，魁北克更低） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Bell 子品牌 |
-| Koodo | 二级 | Telus | ~45（另有 60 / 100 GB） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Telus 子品牌，有专门 newcomer 页面 |
+| Telus | 一级 | Telus | 65 起（新移民价以官网为准） | 60 GB | Newcomer 项目可免 | 新移民 / PR | 与安置机构合作有推荐优惠 |
+| Fido | 二级 | Rogers | 45 起（60 GB ~50），5G | 20 GB | Newcomer 项目可免 | 新移民 / PR | Rogers 子品牌 |
+| Virgin Plus | 二级 | Bell | ~45（60 GB ~50，魁北克更低），5G | 20 GB | Newcomer 项目可免 | 新移民 / PR | Bell 子品牌 |
+| Koodo | 二级 | Telus | ~45（另有 60 / 100 GB），5G | 20 GB | Newcomer 项目可免 | 新移民 / PR | Telus 子品牌，有专门 newcomer 页面 |
 | Freedom Mobile | 独立 | Freedom | 35 起（$50 / 40 GB 含美国，$65 / 50 GB 含美墨） | 10 GB 起 | 对新移民审批最宽松 | 新移民 / PR | 高档套餐含美国 / 墨西哥漫游 |
 | Public Mobile | 预付费 | Telus | 35 | 50 GB（5G） | 否 | 新移民 | 纯线上，无合约 |
 | Lucky Mobile | 预付费 | Bell | 19 起；35 | 30 GB（含赠送） | 否 | 新移民 | Bell 旗下预付费 |
@@ -181,10 +181,10 @@ B. 已持有 PR 卡的永久居民（PR Holder）
 |---|---|---|---|---|---|---|
 | Public Mobile | Telus | $15 | $5 | 5G | $35 / 50 GB（另有 $40 / 60 GB、$50 / 100 GB） | 停机超 90 天永久关闭 |
 | Lucky Mobile | Bell | $10 | 免费 | 4G | $19 起；$35 / 30 GB（含自动充值赠 5 GB） | 120 天内充值可恢复，号码最早 90 天后回收 |
-| Chatr | Rogers | $10 | 有 | 4G | $25 / 25 GB；$35 / 35 GB；$39 / 60 GB；$47 / 80 GB | 待核实 |
-| Fizz | Videotron | $5 | 有 | 5G | 约 $34 / 100 GB（常规 $35 / 35 GB 起） | 待核实 |
-| Koodo Prepaid | Telus | 门店免费 / 线上 $10 | 限时 $0 | 4G | $19 起；$35 / 30 GB | 待核实 |
-| Freedom Prepaid | Freedom | 官网订购 | 待核实 | 5G+ | $129 / 年 20 GB；$159 / 年 40 GB | 待核实 |
+| Chatr | Rogers | $10 | 有 | 4G | $25 / 25 GB；$35 / 35 GB；$39 / 60 GB；$47 / 80 GB | 新开户第 58 天未续费即销户；老用户余额连续 90 天低于月费即销户 |
+| Fizz | Videotron | $5 | 有 | 5G | 约 $34 / 100 GB（常规 $35 / 35 GB 起） | 官网未公开天数，扣款失败会暂停服务 |
+| Koodo Prepaid | Telus | 门店免费 / 线上 $10 | 限时 $0 | 4G | $19 起；$35 / 30 GB | 套餐过期后 90 天内充值可恢复 |
+| Freedom Prepaid | Freedom | 官网订购 | 支持 | 5G+ | $129 / 年 20 GB；$159 / 年 40 GB | 停机后号码保留 90 天 |
 
 **通用要点**
 
