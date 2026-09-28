@@ -147,17 +147,19 @@ B. 已持有 PR 卡的永久居民（PR Holder）
 
 ## 参考数据（2026 年 9 月整理，发布前需核实）
 
+> 后付费价格为自带手机（BYOD）+ 自动扣款价，以安省为主。
+
 可直接附在 Prompt 后面，让模型写入 `PLANS`：
 
 | 运营商 / 品牌 | 层级 | 网络 | 参考月费 (CAD) | 参考流量 | 信用审核 | 适用 | 备注 |
 |---|---|---|---|---|---|---|---|
-| Rogers | 一级 | Rogers | 待核实 | 待核实 | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，覆盖最好 |
-| Bell | 一级 | Bell | 待核实 | 待核实 | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，可捆绑家庭宽带 |
+| Rogers | 一级 | Rogers | 60 起（Basic；Essentials ~65） | 60 GB（Essentials 100 GB） | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，覆盖最好 |
+| Bell | 一级 | Bell | ~70（5G+ Essentials，原价 90） | 100 GB | Newcomer 项目可免 | 新移民 / PR | 有 newcomer 项目，可捆绑家庭宽带 |
 | Telus | 一级 | Telus | ~55 | ~100 GB + 附加福利 | Newcomer 项目可免 | 新移民 / PR | 与安置机构合作有推荐优惠 |
-| Fido | 二级 | Rogers | 待核实 | 待核实 | Newcomer 项目可免 | 新移民 / PR | Rogers 子品牌 |
-| Virgin Plus | 二级 | Bell | 待核实 | 待核实 | Newcomer 项目可免 | 新移民 / PR | Bell 子品牌 |
-| Koodo | 二级 | Telus | 待核实 | 待核实 | Newcomer 项目可免 | 新移民 / PR | Telus 子品牌，有专门 newcomer 页面 |
-| Freedom Mobile | 独立 | Freedom | 从 ~35 起 | 待核实 | 对新移民审批最宽松 | 新移民 / PR | Total Freedom 5G+，含加美墨漫游，Price Freeze |
+| Fido | 二级 | Rogers | 45 起（60 GB ~50） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Rogers 子品牌 |
+| Virgin Plus | 二级 | Bell | ~45（60 GB ~50，魁北克更低） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Bell 子品牌 |
+| Koodo | 二级 | Telus | ~45（另有 60 / 100 GB） | 20 GB | Newcomer 项目可免 | 新移民 / PR | Telus 子品牌，有专门 newcomer 页面 |
+| Freedom Mobile | 独立 | Freedom | 35 起（$50 / 40 GB 含美国，$65 / 50 GB 含美墨） | 10 GB 起 | 对新移民审批最宽松 | 新移民 / PR | 高档套餐含美国 / 墨西哥漫游 |
 | Public Mobile | 预付费 | Telus | ~35 | ~30 GB（含美国通话） | 否 | 新移民 | 纯线上，无合约 |
 | Lucky Mobile | 预付费 | Bell | ~25 | 20–25 GB | 否 | 新移民 | Bell 旗下预付费 |
 | Chatr | 预付费 | Rogers | ~25 | 20–25 GB | 否 | 新移民 | Rogers 旗下预付费 |
