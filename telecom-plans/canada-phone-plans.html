@@ -169,6 +169,14 @@ table.plans td[data-label="漫游"]{min-width:72px}
   table.plans .note{min-width:0}
 }
 
+/* ===== 预付费与 SIM 卡 ===== */
+.sub-h{font-size:1.1rem;margin-top:14px}
+.matrix.cmp td{min-width:150px}
+.matrix.cmp tbody th{min-width:96px}
+.matrix.sim-table{min-width:980px}
+.matrix.sim-table td{min-width:0}
+.tips.tips-2{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+
 /* ===== 材料清单 ===== */
 .check-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 .progress{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);flex:1 1 260px;max-width:420px}
@@ -235,6 +243,7 @@ footer h2{font-size:1rem;color:var(--ink)}
       <a href="#quiz">快速决策</a>
       <a href="#tiers">运营商分层</a>
       <a href="#compare">对比表</a>
+      <a href="#sim">预付费 / SIM 卡</a>
       <a href="#docs">材料清单</a>
       <a href="#steps">办理流程</a>
       <a href="#tips">省钱避坑</a>
@@ -326,7 +335,7 @@ footer h2{font-size:1rem;color:var(--ink)}
         <tbody>
           <tr><th scope="row">一级品牌</th><td>Rogers</td><td>Bell</td><td>Telus</td><td>Videotron（魁北克）</td></tr>
           <tr><th scope="row">二级品牌</th><td>Fido</td><td>Virgin Plus</td><td>Koodo</td><td>Freedom Mobile（独立运营商）</td></tr>
-          <tr><th scope="row">预付费品牌</th><td>Chatr</td><td>Lucky Mobile</td><td>Public Mobile</td><td>Fizz</td></tr>
+          <tr><th scope="row">预付费品牌</th><td>Chatr</td><td>Lucky Mobile</td><td>Public Mobile · Koodo Prepaid</td><td>Fizz · Freedom Prepaid</td></tr>
         </tbody>
       </table>
     </div>
@@ -351,7 +360,7 @@ footer h2{font-size:1rem;color:var(--ink)}
       </article>
       <article class="tier" data-tier="prepaid">
         <h3>预付费品牌</h3>
-        <p class="brands">Chatr · Lucky Mobile · Public Mobile · Fizz</p>
+        <p class="brands">Chatr · Lucky Mobile · Public Mobile · Koodo Prepaid · Fizz</p>
         <dl>
           <dt>特点</dt><dd>不做信用审核、无合约、价格最低，客服多在线上。</dd>
           <dt>适合</dt><dd>刚落地的新移民、学生、自带手机（BYOD）的人。</dd>
@@ -420,6 +429,100 @@ footer h2{font-size:1rem;color:var(--ink)}
         </thead>
         <tbody id="planBody"></tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 预付费与实体 SIM 卡 ===== -->
+<section id="sim">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">预付费与 SIM 卡</span>
+      <h2>预付费套餐和实体 SIM 卡</h2>
+      <p class="lede">大部分新移民的第一张加拿大手机卡都是预付费卡。这一部分把预付费和后付费、实体卡和 eSIM 的区别列清楚，再给出各品牌 SIM 卡的价格、购买地点和停机规则。</p>
+    </div>
+
+    <h3 class="sub-h">预付费、Newcomer 后付费和标准后付费的区别</h3>
+    <div class="matrix-scroll">
+      <table class="matrix cmp">
+        <caption>价格区间为 2026 年 9 月参考价（CAD / 月，税前）</caption>
+        <thead>
+          <tr><th scope="col">对比项</th><th scope="col">预付费（Prepaid）</th><th scope="col">Newcomer 后付费</th><th scope="col">标准后付费（Postpaid）</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">信用审核</th><td><span class="tag ok">不需要</span></td><td><span class="tag info">窗口期内免审核</span> 不符合时可交押金</td><td><span class="tag warn">需要</span></td></tr>
+          <tr><th scope="row">证件</th><td>护照即可，线上开户通常只要付款方式</td><td>护照 + COPR / 工签 / 学签</td><td>PR 卡或驾照 + 加拿大信用卡</td></tr>
+          <tr><th scope="row">付款方式</th><td>先充值后使用，余额不够就停机</td><td>按月出账单，自动扣款</td><td>按月出账单，自动扣款</td></tr>
+          <tr><th scope="row">合约</th><td>没有，随时停用或换品牌</td><td>按月，可选 24 个月分期购机</td><td>按月，可选 24 个月分期购机</td></tr>
+          <tr><th scope="row">参考月费</th><td class="num">$19–$50</td><td class="num">约 $45–$70</td><td class="num">约 $45–$105</td></tr>
+          <tr><th scope="row">网络速度</th><td>多为 4G；Public Mobile、Fizz、Freedom Prepaid 有 5G</td><td>5G 为主</td><td>5G / 5G+</td></tr>
+          <tr><th scope="row">流量用完</th><td>降速或停止，不会多扣钱</td><td>按套餐规定降速或另收费</td><td>按套餐规定降速或另收费</td></tr>
+          <tr><th scope="row">手机</th><td>自带已解锁手机</td><td>可分期购机</td><td>可分期购机，额度更高</td></tr>
+          <tr><th scope="row">美国 / 国际漫游</th><td>大多不含，需另购；有少量限时加美墨套餐</td><td>部分套餐包含</td><td>高档套餐包含</td></tr>
+          <tr><th scope="row">家庭多线折扣</th><td>基本没有</td><td>有</td><td>有</td></tr>
+          <tr><th scope="row">客服</th><td>线上聊天、社区论坛为主</td><td>门店 + 电话</td><td>门店 + 电话</td></tr>
+          <tr><th scope="row">忘记付款</th><td>暂停服务，拖太久号码会被回收</td><td>逾期记录影响信用分</td><td>逾期记录影响信用分</td></tr>
+          <tr><th scope="row">最适合</th><td>刚落地、学生、预算紧、主要在城市活动</td><td>刚落地但需要大网络、分期买手机或家庭多线</td><td>已有信用记录、要换新机或办家庭计划</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">实体 SIM 卡和 eSIM 的区别</h3>
+    <div class="matrix-scroll">
+      <table class="matrix cmp">
+        <caption>两种卡用的是同一个套餐，区别在于怎么装进手机</caption>
+        <thead>
+          <tr><th scope="col">对比项</th><th scope="col">实体 SIM 卡</th><th scope="col">eSIM</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">形式</th><td>插进卡槽的小卡，多为三合一尺寸（标准 / Micro / Nano 可掰）</td><td>手机内置芯片，扫二维码或在 App 里下载</td></tr>
+          <tr><th scope="row">卡费</th><td class="num">$5–$15（Koodo 门店免费）</td><td class="num">$0–$5</td></tr>
+          <tr><th scope="row">在哪买</th><td>机场柜台、运营商门店、便利店、超市、Dollarama、Amazon、官网邮寄</td><td>官网或 App 在线购买</td></tr>
+          <tr><th scope="row">落地前准备</th><td>一般要落地后才能买到卡</td><td>出发前就能买好，落地开机即用（部分品牌要求加拿大地址或付款卡，以官网为准）</td></tr>
+          <tr><th scope="row">手机要求</th><td>已解锁，有卡槽</td><td>已解锁并支持 eSIM。国行 iPhone 大多不支持 eSIM，在「设置 → 通用 → 关于本机」能看到 EID 才支持</td></tr>
+          <tr><th scope="row">保留国内号码</th><td>双卡手机可以国内卡 + 加拿大卡同时用</td><td>国内实体卡 + 加拿大 eSIM 同时在线，最方便</td></tr>
+          <tr><th scope="row">换手机</th><td>取出插到新手机即可</td><td>需要在 App 里转移或联系客服重新下发</td></tr>
+          <tr><th scope="row">丢失 / 损坏</th><td>卡丢了要重新买卡</td><td>卡不会丢，但手机丢了要联系客服重新下发</td></tr>
+          <tr><th scope="row">更适合</th><td>老款手机、国行双卡手机、想在门店当面办理</td><td>支持 eSIM 的新手机，想落地就能用</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">各预付费品牌 SIM 卡速查</h3>
+    <div class="matrix-scroll">
+      <table class="matrix cmp sim-table">
+        <caption>2026 年 9 月整理；「待核实」请以官网为准</caption>
+        <thead>
+          <tr><th scope="col">品牌</th><th scope="col">网络</th><th scope="col">实体卡</th><th scope="col">eSIM</th><th scope="col">速度</th><th scope="col">主力套餐（30 天）</th><th scope="col">在哪买</th><th scope="col">停机与号码回收</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Public Mobile</th><td>Telus</td><td class="num">$15</td><td class="num">$5</td><td><span class="tag ok">5G</span></td><td class="num">$35 / 50 GB</td><td>官网订购，部分零售店有售</td><td>停机超过 90 天账户永久关闭；新开户首月后未续费为 58 天</td></tr>
+          <tr><th scope="row">Lucky Mobile</th><td>Bell</td><td class="num">$10</td><td>免费</td><td><span class="tag plain">4G</span></td><td class="num">$19 起；$35 / 30 GB</td><td>Lucky 门店和柜台、Dollarama、Amazon、官网</td><td>停机后 120 天内充值可恢复；号码最早在停机 90 天后被重新分配</td></tr>
+          <tr><th scope="row">Chatr</th><td>Rogers</td><td class="num">$10</td><td>有</td><td><span class="tag plain">4G</span></td><td class="num">$25 / 25 GB</td><td>Chatr 门店、多伦多皮尔逊机场柜台、官网</td><td><span class="tbd">待核实</span></td></tr>
+          <tr><th scope="row">Fizz</th><td>Videotron</td><td class="num">$5</td><td>有，可免费试用网络</td><td><span class="tag ok">5G</span></td><td class="num">约 $34 / 100 GB</td><td>官网订购邮寄</td><td><span class="tbd">待核实</span></td></tr>
+          <tr><th scope="row">Koodo Prepaid</th><td>Telus</td><td>门店免费 / 线上 $10</td><td>限时 $0（至 10 月 6 日）</td><td><span class="tag plain">4G</span></td><td class="num">$19 起；$35 / 30 GB</td><td>Koodo 门店、官网</td><td><span class="tbd">待核实</span></td></tr>
+          <tr><th scope="row">Freedom Prepaid</th><td>Freedom</td><td>官网订购，可能有一次性开通费</td><td><span class="tbd">待核实</span></td><td><span class="tag ok">5G+</span></td><td class="num">$129 / 年 20 GB</td><td>Freedom 门店、官网</td><td><span class="tbd">待核实</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="notice"><strong>这些预付费已停止新开户：</strong>Telus Prepaid（2026-07-01 起，改由 Koodo Prepaid 承接）、Bell Prepaid（2024-12-31 起，改由 Lucky Mobile 承接）、Rogers Prepaid（2025-02-20 起，改由 Chatr 承接）。网上看到这三家的预付费卡，老用户可以继续用，新用户直接选承接品牌。</p>
+
+    <h3 class="sub-h">实体卡购买和激活步骤</h3>
+    <ol class="timeline">
+      <li><div><span class="when">出发前</span><h3>确认手机能用</h3><p>手机要已解锁。双卡手机可以一张放国内卡、一张放加拿大卡；只有一个卡槽时，国内卡要取下妥善保管。</p></div></li>
+      <li><div><span class="when">落地后</span><h3>选品牌和购买地点</h3><p>机场能马上用上但选择少、价格高；市区门店、便利店、超市和官网邮寄更便宜。住郊区优先选 Telus、Bell、Rogers 网络上的品牌。</p></div></li>
+      <li><div><span class="when">买卡时</span><h3>带护照</h3><p>机场和门店买卡一般要看护照。预付费不需要 SIN，也不需要信用卡，现金、借记卡或充值卡都能付。</p></div></li>
+      <li><div><span class="when">激活</span><h3>插卡、上网激活、选号码</h3><p>插卡开机后，打开品牌官网或 App，输入卡背面 19–20 位的 SIM 卡号（ICCID），选套餐、付款，再选号码。可以选所在城市的区号，例如多伦多 416 / 647、温哥华 604 / 778。</p></div></li>
+      <li><div><span class="when">激活后</span><h3>开自动充值</h3><p>Lucky、Chatr、Koodo Prepaid 开自动充值会赠送额外流量，也能避免余额不足停机。</p></div></li>
+      <li><div><span class="when">保存</span><h3>记下账户号码和 PIN</h3><p>以后转到后付费或换品牌时，携号转网要用到账户号码和 PIN。不要先注销旧号，在新运营商那边办理转入即可。</p></div></li>
+    </ol>
+
+    <div class="tips tips-2">
+      <article class="tip"><h3>机场买卡更贵</h3><p>机场套餐选择少，价格比市区门店和官网高。机场只买最小套餐先用几天，或者出发前备好 eSIM，进城再比价。</p></article>
+      <article class="tip"><h3>皮尔逊机场有哪些卡</h3><p>1 号航站楼到达层有 Chatr、Fido、Rogers 的柜台，货币兑换处也卖预付费卡；到达层的 7-Eleven 有自有品牌 SIM 卡，约 $10（不含话费）。</p></article>
+      <article class="tip"><h3>没有信用卡怎么续费</h3><p>便利店、超市和药房可以买各品牌的充值卡（voucher），刮开输入充值码即可续费。</p></article>
+      <article class="tip alert"><h3>SIM 卡费和 CRTC 新规</h3><p>2026-06-12 起禁止收取的是套餐激活费、改套餐费和解约费。SIM 卡本身的费用（$5–$15）通常照收。门店另收「开通费」时，可以当场问清楚。</p></article>
     </div>
   </div>
 </section>
@@ -500,6 +603,12 @@ footer h2{font-size:1rem;color:var(--ink)}
       <li><a href="https://www.iphoneincanada.ca/2026/07/05/fido-price-increase-wireless-plans/" target="_blank" rel="noopener">iPhone in Canada – Fido 2026 年 7 月涨价</a></li>
       <li><a href="https://mobilesyrup.com/2026/04/21/rogers-revamps-plans-price-lock-priority-network-access/" target="_blank" rel="noopener">MobileSyrup – Rogers 2026 年 4 月新套餐</a></li>
       <li><a href="https://mobilesyrup.com/2026/05/01/bell-top-end-plans-unlimited-data-price-guarantee/" target="_blank" rel="noopener">MobileSyrup – Bell 2026 年 5 月套餐调整</a></li>
+      <li><a href="https://www.iphoneincanada.ca/2026/09/12/public-mobile-vs-lucky-vs-chatr-vs-fizz-best-cellphone-plans-september-2026/" target="_blank" rel="noopener">iPhone in Canada – Public Mobile vs Lucky vs Chatr vs Fizz（2026 年 9 月）</a></li>
+      <li><a href="https://www.planhub.ca/cell-phone-plans-fizz" target="_blank" rel="noopener">PlanHub – Fizz 2026 年 9 月套餐</a></li>
+      <li><a href="https://www.luckymobile.ca/shop/phones/sim-card" target="_blank" rel="noopener">Lucky Mobile – SIM 卡与 eSIM</a></li>
+      <li><a href="https://www.chatrwireless.com/airport/pearson-sim-esim" target="_blank" rel="noopener">Chatr – 皮尔逊机场 SIM / eSIM</a></li>
+      <li><a href="https://www.koodomobile.com/en/prepaid-plans" target="_blank" rel="noopener">Koodo – 预付费套餐</a></li>
+      <li><a href="https://www.whistleout.ca/CellPhones/News/telus-prepaid-cancellation" target="_blank" rel="noopener">WhistleOut – Telus 预付费停止新开户</a></li>
       <li><a href="https://www.planhub.ca/cell-phone-plans-freedom-mobile" target="_blank" rel="noopener">PlanHub – Freedom Mobile 2026 年 9 月套餐</a></li>
     </ul>
     <p class="num">最后更新：2026-09-28</p>
@@ -541,18 +650,30 @@ const PLANS = [
     roaming:"$50 / 40 GB 起含美国，$65 / 50 GB 含美国和墨西哥", creditCheck:false, prepaid:false, audience:["newcomer","pr"], newcomerOffer:true,
     eligibilityNote:"对新移民审批最宽松，后付费可按类似预付费条件开通",
     notes:"$45 / 30 GB 仅限加拿大；另有 $29 / 60 GB 加美墨限时优惠（主要针对老用户回归）；郊区请先查覆盖", sourceUrl:"https://www.freedommobile.ca/en-CA/canada-us" },
-  { carrier:"Public Mobile", tier:"prepaid", network:"Telus", planName:"预付费套餐", priceCAD:35, pricePrefix:"约", dataGB:30, speed:"待核实",
-    roaming:"含美国通话", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
-    eligibilityNote:"无需信用记录", notes:"纯线上办理与客服，无合约", sourceUrl:"" },
-  { carrier:"Lucky Mobile", tier:"prepaid", network:"Bell", planName:"预付费套餐", priceCAD:25, pricePrefix:"约", dataGB:20, dataNote:"20–25 GB", speed:"待核实",
+  { carrier:"Public Mobile", tier:"prepaid", network:"Telus", planName:"5G 预付费（30 天）", priceCAD:35, dataGB:50, speed:"5G",
     roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
-    eligibilityNote:"无需信用记录", notes:"Bell 旗下预付费，门店和便利店可买卡", sourceUrl:"" },
-  { carrier:"Chatr", tier:"prepaid", network:"Rogers", planName:"预付费套餐", priceCAD:25, pricePrefix:"约", dataGB:20, dataNote:"20–25 GB", speed:"待核实",
+    sim:"实体卡 $15 / eSIM $5",
+    eligibilityNote:"无需信用记录", notes:"另有 $40 / 60 GB、$50 / 100 GB 5G，$35 / 25 GB 含 1000 分钟国际通话；7 月起有限时加美墨 5G 套餐；未用完流量可结转；纯线上客服", sourceUrl:"" },
+  { carrier:"Lucky Mobile", tier:"prepaid", network:"Bell", planName:"预付费（30 天）", priceCAD:35, dataGB:30, dataNote:"30 GB（含自动充值赠送 5 GB）", speed:"4G",
     roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
-    eligibilityNote:"无需信用记录", notes:"Rogers 旗下预付费", sourceUrl:"" },
-  { carrier:"Fizz", tier:"prepaid", network:"Videotron", planName:"预付费套餐", priceCAD:32, pricePrefix:"约", dataGB:25, speed:"待核实",
+    sim:"实体卡 $10 / eSIM 免费",
+    eligibilityNote:"无需信用记录", notes:"$19 / 500 MB 起；$25 / 5 GB、$30 / 15 GB（含自动充值赠送）；原 $25 / 25 GB 已下架；门店、Dollarama、Amazon 可买卡", sourceUrl:"https://www.luckymobile.ca/shop/plans/prepaid" },
+  { carrier:"Chatr", tier:"prepaid", network:"Rogers", planName:"预付费（30 天）", priceCAD:25, dataGB:25, dataNote:"25 GB（含自动充值赠送 5 GB）", speed:"4G",
     roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
-    eligibilityNote:"无需信用记录", notes:"主要服务魁北克及部分省份，有推荐码奖励", sourceUrl:"" }
+    sim:"实体卡 $10 / 有 eSIM",
+    eligibilityNote:"无需信用记录", notes:"另有 $35 / 35 GB、$39 / 60 GB、$47 / 80 GB（均含自动充值赠送）；多伦多皮尔逊机场有柜台", sourceUrl:"https://www.chatrwireless.com/plans" },
+  { carrier:"Fizz", tier:"prepaid", network:"Videotron", planName:"5G 月付", priceCAD:34, pricePrefix:"约", dataGB:100, speed:"5G",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    sim:"实体卡 $5 / 有 eSIM",
+    eligibilityNote:"无需信用记录", notes:"9 月比价网站显示的最优价；常规 5G 套餐 $35 / 35 GB 起；流量自动结转、可送给朋友；主要在魁北克，已扩展到安省、阿省、BC，办理前确认本省可用", sourceUrl:"https://www.planhub.ca/cell-phone-plans-fizz" },
+  { carrier:"Koodo Prepaid", tier:"prepaid", network:"Telus", planName:"预付费（30 天）", priceCAD:35, dataGB:30, speed:"4G",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    sim:"门店免费 / 线上 $10 / eSIM 限时 $0",
+    eligibilityNote:"无需信用记录", notes:"$19 起（仅通话短信 + 自动充值赠 500 MB）；Telus Prepaid 2026-07-01 起停止新开户，改由 Koodo Prepaid 承接", sourceUrl:"https://www.koodomobile.com/en/prepaid-plans" },
+  { carrier:"Freedom Prepaid", tier:"prepaid", network:"Freedom", planName:"按年预付费", priceCAD:129, pricePeriod:"year", dataGB:20, dataNote:"20 GB / 年", speed:"5G+",
+    roaming:"", creditCheck:false, prepaid:true, audience:["newcomer","pr"], newcomerOffer:false,
+    sim:"官网订购，可能有一次性开通费",
+    eligibilityNote:"无需信用记录", notes:"约合每月 $10.75；$159 / 年 40 GB。流量是全年总量，适合主要用 Wi-Fi、只需要号码的人", sourceUrl:"https://shop.freedommobile.ca/en-CA/prepaid-plans" }
 ];
 
 const TIER_LABEL = { big3:"一级品牌", flanker:"二级品牌", prepaid:"预付费", independent:"独立运营商" };
@@ -622,7 +743,7 @@ const TIPS = {
 
 /* ===== 推荐结果数据 ===== */
 const RECS = {
-  prepaid: { title:"预付费子品牌", brands:"Public Mobile、Lucky Mobile、Chatr、Fizz", tier:"prepaid", hl:["prepaid"],
+  prepaid: { title:"预付费子品牌", brands:"Public Mobile、Lucky Mobile、Chatr、Fizz、Koodo Prepaid", tier:"prepaid", hl:["prepaid"],
     why:"不做信用审核，没有合约，月费最低，适合先拿到本地号码。" },
   newcomer: { title:"Newcomer 后付费优惠", brands:"Rogers、Bell、Telus、Fido、Virgin Plus、Koodo、Freedom 的 newcomer 项目", tier:"newcomer", hl:["big3","flanker"],
     why:"在窗口期内免加拿大信用审核，可以用大网络、办家庭计划或分期买手机。" },
@@ -677,7 +798,7 @@ function recommend(credit, budget, prio){
   if (budget === "lt30") {
     key = "prepaid";
     reasons.push("预算低于 $30 时，预付费品牌基本是唯一选择。");
-    if (prio === "roaming") reasons.push("需要美国通话可以看 Public Mobile 含美国通话的套餐。");
+    if (prio === "roaming") reasons.push("需要美国漫游可以留意 Public Mobile 的限时加美墨 5G 套餐。");
   } else if (prio === "cheap") {
     key = "prepaid";
     reasons.push("按性价比，预付费品牌每 GB 价格最低。");
@@ -742,7 +863,8 @@ function renderTable(){
     if (b[k] == null) return -1;
     return dir * (a[k] - b[k]);
   };
-  if (state.sort === "price") rows.sort((a, b) => nullLast(a, b, "priceCAD", 1));
+  rows.forEach(p => { p.monthly = p.priceCAD == null ? null : (p.pricePeriod === "year" ? p.priceCAD / 12 : p.priceCAD); });
+  if (state.sort === "price") rows.sort((a, b) => nullLast(a, b, "monthly", 1));
   if (state.sort === "data") rows.sort((a, b) => nullLast(a, b, "dataGB", -1));
 
   $("#planCount").textContent = `显示 ${rows.length} / ${PLANS.length} 条`;
@@ -750,6 +872,7 @@ function renderTable(){
   if (!rows.length) { body.innerHTML = `<tr><td colspan="9" class="empty">没有符合条件的套餐，试着取消一些筛选。</td></tr>`; return; }
   body.innerHTML = rows.map(p => {
     const price = p.priceCAD == null ? `<span class="tbd">待核实</span>`
+      : p.pricePeriod === "year" ? `$${p.priceCAD}<small> / 年</small><span class="sub">约 $${(p.priceCAD / 12).toFixed(2)} / 月</span>`
       : `${p.pricePrefix === "约" ? "<small>约 </small>" : ""}$${p.priceCAD}${p.pricePrefix === "起" ? "<small> 起</small>" : ""}`;
     const data = p.dataGB == null ? `<span class="tbd">待核实</span>`
       : (p.dataGB === Infinity ? "无限（超量降速）" : esc(p.dataNote || p.dataGB + " GB"));
@@ -773,7 +896,7 @@ function renderTable(){
       <td data-label="漫游">${p.roaming ? esc(p.roaming) : `<span style="color:var(--muted)">—</span>`}</td>
       <td data-label="信用审核"><span class="tags">${credit}</span></td>
       <td data-label="适用身份"><span class="tags">${aud}</span></td>
-      <td data-label="备注" class="note">${esc(p.notes)}。${esc(p.eligibilityNote)}。${link}</td>
+      <td data-label="备注" class="note">${p.sim ? `<strong>SIM：${esc(p.sim)}</strong><br>` : ""}${esc(p.notes)}。${esc(p.eligibilityNote)}。${link}</td>
     </tr>`;
   }).join("");
 }
